@@ -1,0 +1,13 @@
+- @title = "Добавить игру"
+= form_for @game do |f|
+	%fieldset
+		.clearfix
+			%label Название
+			.input= f.text_field :name, { :class => :xlarge }
+		= f.fields_for :requests do |r|
+			= r.hidden_field :portal_id, :value => r.object.portal.id
+			.clearfix
+				%label= r.object.portal.name
+				.input= r.text_field :url, { :class => :xlarge }
+		.actions
+			= f.submit "Сохранить", :class => "btn primary"

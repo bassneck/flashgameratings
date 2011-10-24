@@ -1,0 +1,48 @@
+!!!
+%html
+	%head
+		%title Сообщество плюсовиков
+		= stylesheet_link_tag    "application"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+
+		.topbar
+			.fill
+				.container
+					%a.brand{ :href=> root_url } FGR
+					%ul.nav
+						%li.active
+							= link_to "Домой", root_url
+						%li
+							= link_to "Добавить", new_game_path
+					- if logged_in?
+						%ul.pull-right
+							%li= current_user.username
+							%li= link_to "выйти", sign_out_path
+					- else
+						= form_for sessions_path, :html => { :class => "pull-right" } do
+							= text_field_tag :username, params[:username], :placeholder => "Логин", :class => "input-small"
+							= password_field_tag :password, params[:password], :placeholder => "Пароль", :class => "input-small"
+							= submit_tag "Войти", :class => "btn"
+
+		.container
+			.content
+				.page-header
+					%h1= @title || "Заголовок"
+
+				- flash.each do |key, value|
+					.alert-message{ :class => key }
+						%p
+							%strong Oh snap!
+							= value
+
+				.row
+					.span10
+						= yield
+					.span4
+						%h3 Secondary content
+
+			%footer
+				%p &copy; FlashGameRatings #{Time.now.year}
