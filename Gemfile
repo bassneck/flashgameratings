@@ -33,7 +33,7 @@ gem 'sorcery'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :development, :text do
+group :development, :test do
 	gem 'sqlite3'
 end
 
