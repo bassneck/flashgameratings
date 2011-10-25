@@ -1,4 +1,8 @@
 - @title = "Добавить игру"
+- flash.each do |key, value|
+	.alert-message{ :class => key }
+		%p
+			%strong= value
 = form_for @game do |f|
 	%fieldset
 		.clearfix

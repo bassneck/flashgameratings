@@ -11,18 +11,19 @@
 		.topbar
 			.fill
 				.container
-					%a.brand{ :href=> root_url } FGR
+					%a.brand{ :href=> root_url } FGR[beta]
 					%ul.nav
 						%li.active
 							= link_to "Домой", root_url
 						%li
 							= link_to "Добавить", new_game_path
 					- if logged_in?
-						%ul.pull-right
-							%li= current_user.username
-							%li= link_to "выйти", sign_out_path
+						.pull-right
+							%ul
+								%li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
+								%li= link_to "выйти", sign_out_path
 					- else
-						= form_for sessions_path, :html => { :class => "pull-right" } do
+						= form_tag sessions_path, :class => "pull-right" do
 							= text_field_tag :username, params[:username], :placeholder => "Логин", :class => "input-small"
 							= password_field_tag :password, params[:password], :placeholder => "Пароль", :class => "input-small"
 							= submit_tag "Войти", :class => "btn"
@@ -32,17 +33,14 @@
 				.page-header
 					%h1= @title || "Заголовок"
 
-				- flash.each do |key, value|
-					.alert-message{ :class => key }
-						%p
-							%strong Oh snap!
-							= value
-
 				.row
 					.span10
 						= yield
 					.span4
-						%h3 Secondary content
+						%h3 Лучшие плюсовики
+						%ul
+							- User.all.each do |u|
+								%li= link_to "#{u.username} (#{u.points})", u
 
 			%footer
 				%p &copy; FlashGameRatings #{Time.now.year}

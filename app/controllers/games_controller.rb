@@ -1,9 +1,12 @@
 # -*- encoding : utf-8 -*-
 
 class GamesController < ApplicationController
+
+	before_filter :require_login, :except => [:index]
+
 	def index
-		# TODO index should only show games that current_user hasn't voted for and that are not older than X days
-		@games = Game.all
+		# TODO index should only show games that current_user hasn't voted for
+		@games = Game.latest.unvoted(current_user)
 	end
 
 	def new
@@ -17,8 +20,11 @@ class GamesController < ApplicationController
 		@game = current_user.games.build(params[:game])
 
 		if @game.save
-			redirect_to root_url
 			flash[:success] = "Игра добавлена. Сейчас мы дружно её плюсанем..."
+			redirect_to root_url
+		else
+			flash.now[:error] = @game.errors.full_messages
+			render :new
 		end
 	end
 

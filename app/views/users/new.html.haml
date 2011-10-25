@@ -13,6 +13,13 @@
 			%label Повторите пароль
 			.input
 				= f.password_field :password_confirmation, { :class => :xlarge }
+		%fieldset
+			%legend Ваши аккаунты на порталах
+			= f.fields_for :user_portal_accounts do |r|
+				= r.hidden_field :portal_id, :value => r.object.portal.id
+				.clearfix
+					%label= r.object.portal.name
+					.input= r.text_field :username, { :class => :xlarge }
 
 		.actions
 			= f.submit "Сохранить", :class => "btn primary"
