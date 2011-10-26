@@ -7,5 +7,9 @@ class Game < ActiveRecord::Base
 	default_scope order("games.updated_at DESC")
 
 	scope :latest, where("games.updated_at > ?", Time.now - 2.weeks)
-	scope :unvoted, lambda{ |u| includes(:requests, :user).where("requests.id NOT IN (?)", u ? u.voted_request_ids : nil) }
+	scope :unvoted, lambda{ |u| includes(:requests, :user).where("games.user_id != ?", u.id).where("requests.id NOT IN (?)", u.voted_requests.any? ? u.voted_request_ids : 0) }
+
+	after_create do |record|
+		record.user.points -= 20
+	end
 end

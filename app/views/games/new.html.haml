@@ -1,17 +1,22 @@
 - @title = "Добавить игру"
-- flash.each do |key, value|
-	.alert-message{ :class => key }
-		%p
-			%strong= value
-= form_for @game do |f|
-	%fieldset
-		.clearfix
-			%label Название
-			.input= f.text_field :name, { :class => :xlarge }
-		= f.fields_for :requests do |r|
-			= r.hidden_field :portal_id, :value => r.object.portal.id
+- if current_user.points >= 0
+	= form_for @game do |f|
+		%fieldset
+
+			- if @game.errors.any?
+				.alert-message.block-message.error
+					%ul
+						- @game.errors.full_messages.each do |e|
+							%li= e
+
+
 			.clearfix
-				%label= r.object.portal.name
-				.input= r.text_field :url, { :class => :xlarge }
-		.actions
-			= f.submit "Сохранить", :class => "btn primary"
+				%label Название
+				.input= f.text_field :name, { :class => :xlarge }
+			= f.fields_for :requests do |r|
+				= r.hidden_field :portal_id, :value => r.object.portal.id
+				.clearfix
+					%label= r.object.portal.name
+					.input= r.text_field :url, { :class => :xlarge }
+			.actions
+				= f.submit "Сохранить", :class => "btn primary"

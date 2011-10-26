@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
 	authenticates_with_sorcery!
 
 	accepts_nested_attributes_for :user_portal_accounts, :reject_if => lambda { |a| a[:username].blank? }, :allow_destroy => true
+
+	scope :profile, select('"users"."id", "users"."username", "users"."points"')
+	scope :best, where('"users"."points" > 0').order('"users"."points" DESC')
+
+	def to_param
+		username
+	end
+
 end

@@ -2,8 +2,10 @@
 
 class UsersController < ApplicationController
 
+	before_filter :require_login, :except => [:show, :new, :create]
+
 	def show
-		@user = User.find(params[:id])
+		@user = User.find_by_username(params[:id])
 	end
 
 	def new
@@ -17,11 +19,11 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			login(@user.username, params[:user][:password])
-			redirect_to root_url
 			flash[:success] = "Добро пожаловать на FGR, #{@user.username}"
+			redirect_to root_url
 		else
+			flash.now[:error] = "Произошла ошибка..."
 			render :new
-			flash.now[:error] = "В процессе регистрации произошли ошибки"
 		end
 	end
 

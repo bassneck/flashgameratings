@@ -26,21 +26,26 @@
 						= form_tag sessions_path, :class => "pull-right" do
 							= text_field_tag :username, params[:username], :placeholder => "Логин", :class => "input-small"
 							= password_field_tag :password, params[:password], :placeholder => "Пароль", :class => "input-small"
-							= submit_tag "Войти", :class => "btn primary"
+							= button_tag "Войти", :name => "commit", :type => "submit", :class => "btn primary"
+							= link_to "Регистрация", sign_up_path, :class => "btn"
 
 		.container
 			.content
 				.page-header
 					%h1= @title || "Заголовок"
 
+				- flash.each do |key, value|
+					.alert-message{ :class => key }
+						%p
+							%strong= value
 				.row
 					.span10
 						= yield
 					.span4
 						%h3 Лучшие плюсовики
 						%ul
-							- User.all.each do |u|
-								%li= link_to "#{u.username} (#{u.points})", u
+							- User.profile.best.each do |u|
+								%li #{u.username} (#{u.points})
 
 			%footer
 				%p &copy; FlashGameRatings #{Time.now.year}

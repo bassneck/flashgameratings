@@ -3,10 +3,15 @@
 class GamesController < ApplicationController
 
 	before_filter :require_login, :except => [:index]
+	before_filter :require_points, :only => [:new, :create]
 
 	def index
 		# TODO index should only show games that current_user hasn't voted for
-		@games = Game.latest.unvoted(current_user)
+		@games = Game.latest
+
+		if logged_in?
+		   @games = @games.unvoted(current_user)
+		end
 	end
 
 	def new
@@ -23,7 +28,7 @@ class GamesController < ApplicationController
 			flash[:success] = "Игра добавлена. Сейчас мы дружно её плюсанем..."
 			redirect_to root_url
 		else
-			flash.now[:error] = @game.errors.full_messages
+			flash.now[:error] = "Произошла ошибка..."
 			render :new
 		end
 	end
@@ -37,4 +42,13 @@ class GamesController < ApplicationController
 		@game = current_user.games.find(params[:id])
 		# TODO update attributes
 	end
+
+	protected
+
+		def requre_points
+			if current_user.points < 0
+				flash[:error] = "Рейтинг должен быть > 0. Проголосуйте за игры камрадов"
+      			redirect_to root_url
+			end
+		end
 end

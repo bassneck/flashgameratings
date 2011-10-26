@@ -11,11 +11,6 @@ class Request < ActiveRecord::Base
 		end
 	end
 
-	before_create do |r|
-		r.user.points -= 1
-		r.user.save
-	end
-
 	scope :unvoted, lambda{ |u|
 		if u
 			where("requests.id NOT IN (?)", u.voted_request_ids)
