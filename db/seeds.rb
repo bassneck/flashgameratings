@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Portal.delete_all
+
 Portal.create([
 			  { :name => "Kongregate", :short_name => "Kong", :url => "kongregate.com", :pattern => "/games/.*?/.+", :color => "C43C35"},
 			  { :name => "NewGrounds", :short_name => "NG", :url => "newgrounds.com", :pattern => "/portal/view/.+", :color => "F89406"},

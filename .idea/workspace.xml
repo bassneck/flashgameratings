@@ -36,15 +36,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="59" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,10 +99,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="game.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/game.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="23" selection-start="553" selection-end="553" vertical-scroll-proportion="0.3357271">
+            <state line="11" column="23" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.24416517">
               <folding />
             </state>
           </provider>
@@ -127,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/layout.scss" />
         <option value="$PROJECT_DIR$/app/models/user_portal_account.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.scss" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
@@ -143,6 +142,7 @@
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/request.rb" />
         <option value="$PROJECT_DIR$/app/models/game.rb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
   </component>
@@ -760,11 +760,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user_portal_account.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="22" selection-start="82" selection-end="82" vertical-scroll-proportion="0.099415205" />
@@ -855,7 +850,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/game.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="553" selection-end="553" vertical-scroll-proportion="0.3357271">
+        <state line="11" column="23" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.24416517">
           <folding />
         </state>
       </provider>
