@@ -11,5 +11,6 @@ class Game < ActiveRecord::Base
 
 	after_create do |record|
 		record.user.points -= 20
+		record.user.save
 	end
 end

@@ -45,7 +45,7 @@ class GamesController < ApplicationController
 
 	protected
 
-		def requre_points
+		def require_points
 			if current_user.points < 0
 				flash[:error] = "Рейтинг должен быть > 0. Проголосуйте за игры камрадов"
       			redirect_to root_url
