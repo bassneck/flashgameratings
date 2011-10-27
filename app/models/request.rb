@@ -21,7 +21,6 @@ class Request < ActiveRecord::Base
 		if value
 			value.strip!
 			value = value.slice(Regexp.new(portal.url + portal.pattern + "$"))
-			value.insert(0, "http://") unless value.include?("http")
 		end
 
 		self[:url] = value

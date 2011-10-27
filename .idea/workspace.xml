@@ -54,19 +54,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="request.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="request.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/request.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="36" selection-start="597" selection-end="597" vertical-scroll-proportion="0.37037036">
+            <state line="22" column="78" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games_helper.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="games_helper.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/helpers/games_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="43" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0">
+            <state line="2" column="62" selection-start="97" selection-end="97" vertical-scroll-proportion="0.10932476">
               <folding />
             </state>
           </provider>
@@ -114,8 +114,8 @@
         <option value="$PROJECT_DIR$/app/controllers/requests_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20111027130202_add_unique_index_to_requests.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/games_helper.rb" />
         <option value="$PROJECT_DIR$/app/models/request.rb" />
+        <option value="$PROJECT_DIR$/app/helpers/games_helper.rb" />
       </list>
     </option>
   </component>
@@ -847,16 +847,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/games_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/request.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="43" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0">
+        <state line="22" column="78" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/request.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/games_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="597" selection-end="597" vertical-scroll-proportion="0.37037036">
+        <state line="2" column="62" selection-start="97" selection-end="97" vertical-scroll-proportion="0.10932476">
           <folding />
         </state>
       </provider>
