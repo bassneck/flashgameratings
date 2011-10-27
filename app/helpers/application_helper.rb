@@ -1,11 +1,11 @@
 module ApplicationHelper
 
 	def analytics
-		if ENV['ANALYTICS']
+		if ENV['GOOGLE_ANALYTICS']
 			content_tag(:script, :type => 'text/javascript') do
 				"
 				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', '#{ENV['ANALYTICS']}']);
+				_gaq.push(['_setAccount', '#{ENV['GOOGLE_ANALYTICS']}']);
 				_gaq.push(['_trackPageview']);
 
 				(function() {
