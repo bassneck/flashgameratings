@@ -9,7 +9,7 @@
 						%li= e
 
 		.clearfix
-			%label Логин на форумах
+			%label Логин
 			.input
 				= f.text_field :username, { :class => :xlarge }
 		.clearfix
@@ -20,8 +20,16 @@
 			%label Повторите пароль
 			.input
 				= f.password_field :password_confirmation, { :class => :xlarge }
+		.clearfix
+			%label Логин на форумах
+			.input
+				= f.text_field :forums, { :class => :xlarge }
+		.clearfix
+			%label Логин на блогах
+			.input
+				= f.text_field :blogs, { :class => :xlarge }
 		%fieldset
-			%legend Ваши аккаунты на порталах
+			%legend Ваши аккаунты (логины) на порталах
 			= f.fields_for :user_portal_accounts do |r|
 				= r.hidden_field :portal_id, :value => r.object.portal.id
 				.clearfix

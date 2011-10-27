@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027130202) do
+ActiveRecord::Schema.define(:version => 20111027143758) do
 
   create_table "games", :force => true do |t|
     t.string    "name"
@@ -58,8 +58,12 @@ ActiveRecord::Schema.define(:version => 20111027130202) do
     t.string    "remember_me_token"
     t.timestamp "remember_me_token_expires_at"
     t.integer   "points",                       :default => 0
+    t.string    "forums"
+    t.string    "blogs"
   end
 
+  add_index "users", ["blogs"], :name => "index_users_on_blogs", :unique => true
+  add_index "users", ["forums"], :name => "index_users_on_forums", :unique => true
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
 end

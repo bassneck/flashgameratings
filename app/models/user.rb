@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :user_portal_accounts, :reject_if => lambda { |a| a[:username].blank? }, :allow_destroy => true
 
 	scope :profile, select('"users"."id", "users"."username", "users"."points"')
-	scope :best, where('"users"."points" > 0').order('"users"."points" DESC')
+	scope :best, where('"users"."points" > 0').order('"users"."points" DESC').limit(10)
 
 	def to_param
 		username
