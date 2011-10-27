@@ -72,10 +72,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="48" selection-start="546" selection-end="546" vertical-scroll-proportion="0.108024694">
+            <state line="27" column="57" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="20" selection-start="395" selection-end="395" vertical-scroll-proportion="0.54662377">
               <folding />
             </state>
           </provider>
@@ -123,8 +132,8 @@
         <option value="$PROJECT_DIR$/app/controllers/requests_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user_portal_account.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20111027143758_add_accounts_to_users.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/users/new.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
       </list>
     </option>
   </component>
@@ -837,13 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="86" selection-start="767" selection-end="767" vertical-scroll-proportion="0.5080386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/requests_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="51" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
@@ -867,7 +869,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="48" selection-start="546" selection-end="546" vertical-scroll-proportion="0.108024694">
+        <state line="27" column="57" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="20" selection-start="395" selection-end="395" vertical-scroll-proportion="0.54662377">
           <folding />
         </state>
       </provider>
