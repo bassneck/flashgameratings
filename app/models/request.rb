@@ -18,7 +18,16 @@ class Request < ActiveRecord::Base
 	}
 
 	def url=(value)
-		value.slice!(Regexp.new(portal.url + portal.pattern + "$")).insert(0, "http://")
-		update_attribute(:url, value)
+		if value
+			value.strip!
+			value = value.slice(Regexp.new(portal.url + portal.pattern + "$"))
+			value.insert(0, "http://") unless value.include?("http")
+		end
+
+		self[:url] = value
+	end
+
+	def url
+		self[:url]
 	end
 end
