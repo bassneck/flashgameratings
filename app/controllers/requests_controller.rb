@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
 		if request.game.user != current_user
 			if not current_user.voted_requests.exists?(request)
 				current_user.user_votes.create(:request => request)
-				redirect_to request.url
+				redirect_to "http://#{request.url}"
 			else
 				flash[:error] = "Вы не можете голосовать дважды"
 				redirect_to root_url
