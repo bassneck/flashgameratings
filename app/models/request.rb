@@ -16,4 +16,9 @@ class Request < ActiveRecord::Base
 			where("requests.id NOT IN (?)", u.voted_request_ids)
 		end
 	}
+
+	def url=(value)
+		value.slice!(Regexp.new(portal.url + portal.pattern + "$")).insert(0, "http://")
+		update_attribute(:url, value)
+	end
 end

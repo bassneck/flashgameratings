@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024234553) do
+ActiveRecord::Schema.define(:version => 20111027130202) do
 
   create_table "games", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "portals", :force => true do |t|
@@ -46,16 +46,18 @@ ActiveRecord::Schema.define(:version => 20111024234553) do
     t.integer "request_id"
   end
 
+  add_index "user_votes", ["user_id", "request_id"], :name => "index_user_votes_on_user_id_and_request_id", :unique => true
+
   create_table "users", :force => true do |t|
-    t.string   "username",                                    :null => false
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
-    t.integer  "points",                       :default => 0
+    t.string    "username",                                    :null => false
+    t.string    "email"
+    t.string    "crypted_password"
+    t.string    "salt"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "remember_me_token"
+    t.timestamp "remember_me_token_expires_at"
+    t.integer   "points",                       :default => 0
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

@@ -20,4 +20,11 @@ class User < ActiveRecord::Base
 		username
 	end
 
+	def self.calculate_points
+		User.all.each do |u|
+			u.points = u.user_votes.count - (u.games.count * 20)
+			u.save
+		end
+	end
+
 end
