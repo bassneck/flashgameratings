@@ -63,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_request.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_request.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/requests/_request.html.haml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="116" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
@@ -72,19 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_request.atom.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/requests/_request.atom.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="61" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
+            <state line="8" column="50" selection-start="207" selection-end="207" vertical-scroll-proportion="0.18181819">
               <folding />
             </state>
           </provider>
@@ -112,10 +103,10 @@
         <option value="$PROJECT_DIR$/app/views/games/_game.html.haml" />
         <option value="$PROJECT_DIR$/app/helpers/games_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/games/index.atom.builder" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/requests/_request.atom.haml" />
         <option value="$PROJECT_DIR$/app/views/games/_game.atom.haml" />
         <option value="$PROJECT_DIR$/app/views/requests/_request.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
       </list>
     </option>
   </component>
@@ -856,11 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="61" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/games/index.atom.builder">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="39" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
@@ -885,6 +871,13 @@
     <entry file="file://$PROJECT_DIR$/app/views/requests/_request.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="116" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="50" selection-start="207" selection-end="207" vertical-scroll-proportion="0.18181819">
           <folding />
         </state>
       </provider>
