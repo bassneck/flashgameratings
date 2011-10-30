@@ -1,9 +1,3 @@
 - @title = "Новые игры"
 %ul.unstyled
-	- @games.each do |g|
-		%li
-			%h3
-				= g.name
-				- g.requests.each do |r|
-					= request(r)
-			#{g.user.username} (#{g.user.points})
+	= render @games

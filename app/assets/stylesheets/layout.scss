@@ -65,4 +65,8 @@ a.request {
 		color:#fff;
 		@include single-box-shadow(#162c31)
 	}
+
+	&.voted {
+		background-color:#a7a6a6 !important;
+	}
 }

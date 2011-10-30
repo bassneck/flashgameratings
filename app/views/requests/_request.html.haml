@@ -1,0 +1,1 @@
+= link_to request.portal.short_name, request, :class => "label request #{(logged_in? and current_user.voted) ? "voted" : ""}", :style => "background-color:##{request.portal.color}", :target => "_blank"

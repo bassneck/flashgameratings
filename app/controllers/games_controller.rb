@@ -9,9 +9,14 @@ class GamesController < ApplicationController
 		# TODO index should only show games that current_user hasn't voted for
 		@games = Game.latest
 
-		if logged_in?
-		   @games = @games.unvoted(current_user)
-		end
+		#if logged_in?
+		#   @games = @games.unvoted(current_user)
+		#end
+
+		respond_to do |format|
+			format.html
+			format.atom
+      	end
 	end
 
 	def new

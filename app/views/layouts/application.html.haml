@@ -6,6 +6,7 @@
 		= javascript_include_tag "application"
 		= csrf_meta_tags
 		= analytics
+		= auto_discovery_link_tag :atom, games_path(:atom)
 	%body
 
 		.topbar

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :user_votes
 	has_many :voted_requests, :through => :user_votes, :source => :request
 	has_many :user_portal_accounts, :dependent => :destroy
+	has_many :requests, :through => :games
 
 	attr_accessible :username, :password, :password_confirmation, :remember_me
 
@@ -23,12 +24,12 @@ class User < ActiveRecord::Base
 	end
 
 	def points
-		user_votes.count - (games.count * 20)
+		user_votes.count - (requests.count * 10)
 	end
 
 	def self.calculate_points
 		User.all.each do |u|
-			u.points = u.user_votes.count - (u.games.count * 20)
+			u.points = u.user_votes.count - (u.requests.count * 10)
 			u.save
 		end
 	end
