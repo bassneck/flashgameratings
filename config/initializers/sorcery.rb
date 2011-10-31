@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me]
+Rails.application.config.sorcery.submodules = [:remember_me, :reset_password]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -101,35 +101,12 @@ Rails.application.config.sorcery.configure do |config|
     # user.subclasses_inherit_config = false                                          # make this configuration
                                                                                       # inheritable for subclasses.
                                                                                       # Useful for ActiveRecord's STI.
-
-    # -- user_activation --
-    # user.activation_state_attribute_name = :activation_state                        # the attribute name to hold
-                                                                                      # activation state
-                                                                                      # (active/pending).
-
-    # user.activation_token_attribute_name = :activation_token                        # the attribute name to hold
-                                                                                      # activation code (sent by email).
-
-    # user.activation_token_expires_at_attribute_name = :activation_token_expires_at  # the attribute name to hold
-                                                                                      # activation code expiration date.
-
-    # user.activation_token_expiration_period =  nil                                  # how many seconds before the
-                                                                                      # activation code expires. nil for
-                                                                                      # never expires.
-
-    # user.user_activation_mailer = nil                                               # your mailer class. Required.
-
-    # user.activation_needed_email_method_name = :activation_needed_email             # activation needed email method
-                                                                                      # on your mailer class.
-
-    # user.activation_success_email_method_name = :activation_success_email           # activation success email method
-                                                                                      # on your mailer class.
-
-    # user.prevent_non_active_users_to_login = true                                   # do you want to prevent or allow
-                                                                                      # users that did not activate by
-                                                                                      # email to login?
-
     # -- reset_password --
+
+	user.reset_password_mailer                        = UserMailer
+    user.reset_password_expiration_period             = 1.day
+    user.reset_password_time_between_emails           = nil
+
     # user.reset_password_token_attribute_name = :reset_password_token                          # reset password code
                                                                                                 # attribute name.
 
@@ -156,41 +133,6 @@ Rails.application.config.sorcery.configure do |config|
                                                                                                 # before allowing
                                                                                                 # another email to be
                                                                                                 # sent.
-
-    # -- brute_force_protection --
-    # user.failed_logins_count_attribute_name = :failed_logins_count                  # failed logins attribute name.
-
-    # user.lock_expires_at_attribute_name = :lock_expires_at                          # this field indicates whether
-                                                                                      # user is banned and when it will
-                                                                                      # be active again.
-
-    # user.consecutive_login_retries_amount_limit = 50                                # how many failed logins allowed.
-
-    # user.login_lock_time_period = 60 * 60                                           # how long the user should be
-                                                                                      # banned. in seconds. 0 for
-                                                                                      # permanent.
-
-    # -- activity logging --
-    # user.last_login_at_attribute_name = :last_login_at                              # last login attribute name.
-    # user.last_logout_at_attribute_name = :last_logout_at                            # last logout attribute name.
-    # user.last_activity_at_attribute_name = :last_activity_at                        # last activity attribute name.
-    # user.activity_timeout = 10 * 60                                                 # how long since last activity is
-                                                                                      # the user defined logged out?
-
-    # -- external --
-    # user.authentications_class = nil                                                # class which holds the various
-                                                                                      # external provider data for this
-                                                                                      # user.
-
-    # user.authentications_user_id_attribute_name = :user_id                          # user's identifier in
-                                                                                      # authentications class.
-
-    # user.provider_attribute_name = :provider                                        # provider's identifier in
-                                                                                      # authentications class.
-
-    # user.provider_uid_attribute_name = :uid                                         # user's external unique
-                                                                                      # identifier in authentications
-                                                                                      # class.
   end
 
   # This line must come after the 'user config' block.

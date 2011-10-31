@@ -7,6 +7,7 @@ Fgr::Application.routes.draw do
 	resources :requests, :only => [:show]
 	resources :users
 	resources :sessions
+	resources :password_resets
 
 	resources :games
 

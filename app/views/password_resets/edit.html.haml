@@ -1,0 +1,26 @@
+- @title = "Восстановление пароля"
+= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f|
+	%fieldset
+
+		- if @user.errors.any?
+			.alert-message.block-message.error
+				%ul
+					- @user.errors.full_messages.each do |e|
+						%li= e
+
+		.clearfix
+			%label Логин *
+			.input
+				= f.text_field :username, { :class => :xlarge }
+		.clearfix
+			%label Пароль *
+			.input
+				= f.password_field :password, { :class => :xlarge }
+		.clearfix
+			%label Повторите пароль *
+			.input
+				= f.password_field :password_confirmation, { :class => :xlarge }
+				= hidden_field_tag :token, @token
+
+		.actions
+			= f.submit "Сохранить", :class => "btn primary"

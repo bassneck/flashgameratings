@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 	attr_accessible :username, :password, :password_confirmation, :remember_me
 
 	validates :username, :presence => true, :uniqueness => true
-	validates :forums, :uniqueness => true, :on => :create
-	validates :blogs, :uniqueness => true, :on => :create
+	validates :email, :presence => true, :uniqueness => true
+	validates :forums, :uniqueness => true, :if => :forums?
+	validates :blogs, :uniqueness => true, :if => :blogs?
 	validates :password, :presence => true, :confirmation => true, :length => { :minimum => 5 }, :on => :create
 
 	authenticates_with_sorcery!

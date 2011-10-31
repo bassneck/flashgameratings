@@ -16,3 +16,13 @@
 
 		.actions
 			= submit_tag "Войти", :class => "btn primary"
+
+= form_tag password_resets_path, :method => :post do
+	%fieldset
+		%legend Забыли пароль?
+		.clearfix
+			%label Email
+			.input
+				= text_field_tag :email
+		.actions
+			= submit_tag "Восстановить пароль", :class => "btn"

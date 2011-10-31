@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027143758) do
+ActiveRecord::Schema.define(:version => 20111031181843) do
 
   create_table "games", :force => true do |t|
     t.string    "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20111027143758) do
   add_index "user_votes", ["user_id", "request_id"], :name => "index_user_votes_on_user_id_and_request_id", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string    "username",                                    :null => false
+    t.string    "username",                                       :null => false
     t.string    "email"
     t.string    "crypted_password"
     t.string    "salt"
@@ -57,13 +57,14 @@ ActiveRecord::Schema.define(:version => 20111027143758) do
     t.timestamp "updated_at"
     t.string    "remember_me_token"
     t.timestamp "remember_me_token_expires_at"
-    t.integer   "points",                       :default => 0
+    t.integer   "points",                          :default => 0
     t.string    "forums"
     t.string    "blogs"
+    t.string    "reset_password_token"
+    t.datetime  "reset_password_token_expires_at"
+    t.datetime  "reset_password_email_sent_at"
   end
 
-  add_index "users", ["blogs"], :name => "index_users_on_blogs", :unique => true
-  add_index "users", ["forums"], :name => "index_users_on_forums", :unique => true
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
 end
