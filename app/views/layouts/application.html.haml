@@ -39,6 +39,20 @@
 					.alert-message{ :class => key }
 						%p
 							%strong= value
+
+				- if logged_in? and current_user.email.blank?
+					.alert-message.block-message.notice
+						%p
+							Пожалуйста, укажите ваш email на случай потери пароля.
+						%p
+							= form_for current_user do |f|
+								.clearfix
+									%label Email *
+									.input
+										= f.text_field :email, { :class => :xlarge }
+								.actions
+									= f.submit "Сохранить", :class => "btn primary"
+
 				.row
 					.span10
 						= yield

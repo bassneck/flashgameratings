@@ -1,0 +1,32 @@
+- @title = "Профиль"
+= form_for @user do |f|
+	%fieldset
+
+		- if @user.errors.any?
+			.alert-message.block-message.error
+				%ul
+					- @user.errors.full_messages.each do |e|
+						%li= e
+
+		.clearfix
+			%label Email *
+			.input
+				= f.text_field :email, { :class => :xlarge }
+		.clearfix
+			%label Логин на форумах flashgamedev.ru
+			.input
+				= f.text_field :forums, { :class => :xlarge }
+		.clearfix
+			%label Логин на блогах flashgameblogs.ru
+			.input
+				= f.text_field :blogs, { :class => :xlarge }
+		%fieldset
+			%legend Ваши аккаунты (логины) на порталах
+			= f.fields_for :user_portal_accounts do |r|
+				= r.hidden_field :portal_id, :value => r.object.portal.id
+				.clearfix
+					%label= r.object.portal.name
+					.input= r.text_field :username, { :class => :xlarge }
+
+		.actions
+			= f.submit "Сохранить", :class => "btn primary"

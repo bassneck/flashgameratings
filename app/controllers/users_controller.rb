@@ -28,10 +28,17 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-
+		@user = User.find_by_username(params[:id])
 	end
 
 	def update
+		@user = User.find_by_username(params[:id])
 
+		if @user.update_attributes(params[:user])
+			flash[:success] = 'Профиль обновлен'
+			redirect_to root_url
+		else
+			render :action => "edit"
+		end
 	end
 end
