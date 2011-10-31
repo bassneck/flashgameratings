@@ -27,15 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="61" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -54,15 +45,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20111031172218_remove_unique_index_from_users.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20111031172218_remove_unique_index_from_users.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="11" selection-start="76" selection-end="76" vertical-scroll-proportion="0.100890204">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="edit.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/password_resets/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -72,19 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="new.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="8" selection-start="0" selection-end="1156" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="42" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0">
+            <state line="42" column="8" selection-start="0" selection-end="1156" vertical-scroll-proportion="0.86197186">
               <folding />
             </state>
           </provider>
@@ -111,11 +84,11 @@
         <option value="$PROJECT_DIR$/app/views/user_mailer/reset_password.text.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/reset_password.html.erb" />
         <option value="$PROJECT_DIR$/app/views/sessions/new.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" />
       </list>
     </option>
   </component>
@@ -795,7 +768,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -900,13 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/password_resets_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="54" selection-start="264" selection-end="264" vertical-scroll-proportion="0.34795323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/sessions/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="24" selection-start="559" selection-end="559" vertical-scroll-proportion="0.52112675">
@@ -928,30 +894,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/controllers/password_resets_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="8" selection-start="0" selection-end="1156" vertical-scroll-proportion="0.0">
+        <state line="13" column="27" selection-start="442" selection-end="442" vertical-scroll-proportion="0.34876543">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20111031172218_remove_unique_index_from_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="42" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="61" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="43" selection-start="836" selection-end="860" vertical-scroll-proportion="0.0">
+        <state line="2" column="11" selection-start="76" selection-end="76" vertical-scroll-proportion="0.100890204">
           <folding />
         </state>
       </provider>
@@ -963,9 +915,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20111031172218_remove_unique_index_from_users.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="76" selection-end="76" vertical-scroll-proportion="0.100890204">
+        <state line="42" column="61" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.15497077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="43" selection-start="836" selection-end="860" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="42" selection-start="598" selection-end="598" vertical-scroll-proportion="1.1492958">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="8" selection-start="0" selection-end="1156" vertical-scroll-proportion="0.86197186">
           <folding />
         </state>
       </provider>

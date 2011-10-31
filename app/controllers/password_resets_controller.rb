@@ -9,8 +9,13 @@ class PasswordResetsController < ApplicationController
 
 		# This line sends an email to the user with instructions on how to reset their password (a url with a random token)
 		if @user
-			@user.deliver_reset_password_instructions!
-			flash[:success] = "На ваш email отправлена инструкция по восстановлению пароля."
+
+			unless @user.email.blank?
+				@user.deliver_reset_password_instructions!
+				flash[:success] = "На ваш email отправлена инструкция по восстановлению пароля."
+			else
+				flash[:error] = "Поле email не заполнено. Обратитесь к администратору"
+			end
 			redirect_to root_url
 		else
 			flash[:error] = "Пользователь с таким логином не найден"
