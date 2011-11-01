@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
 
 	validates :username, :presence => true, :uniqueness => true
 
-	validates :email, :presence => true, :on => :create
-	validates :email, :uniqueness => true, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }
+	validates :email, :presence => true, :uniqueness => true, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }, :on => :create
 
 	validates :forums, :uniqueness => true, :if => :forums?
 	validates :blogs, :uniqueness => true, :if => :blogs?
