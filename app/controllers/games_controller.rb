@@ -2,16 +2,11 @@
 
 class GamesController < ApplicationController
 
-	before_filter :require_login, :except => [:index]
 	before_filter :require_points, :only => [:new, :create]
 
 	def index
 		# TODO index should only show games that current_user hasn't voted for
 		@games = Game.latest
-
-		#if logged_in?
-		#   @games = @games.unvoted(current_user)
-		#end
 
 		respond_to do |format|
 			format.html

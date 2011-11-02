@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
 
 	validates :username, :presence => true, :uniqueness => true
 
-	validates :email, :presence => true, :uniqueness => true, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }, :on => :create
+	validates :email, :presence => true, :on => :create
+	validates :email, :uniqueness => true, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }, :allow_blank => true
 
-	validates :forums, :uniqueness => true, :if => :forums?
-	validates :blogs, :uniqueness => true, :if => :blogs?
+	validates :forums, :uniqueness => true, :if => :forums?, :allow_blank => true
+	validates :blogs, :uniqueness => true, :if => :blogs?, :allow_blank => true
 
 	validates :password, :presence => true, :confirmation => true, :length => { :minimum => 5 }, :on => :create
 
@@ -29,6 +30,10 @@ class User < ActiveRecord::Base
 
 	def points
 		user_votes.count - (requests.count * 10)
+	end
+
+	def email=(value)
+		self[:email] = value unless value.blank?
 	end
 
 	def self.calculate_points
