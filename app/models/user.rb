@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
 	end
 
 	def points
-		#user_votes.count - (requests.count * 10)
-		0
+		user_votes.count - (requests.count * 10)
 	end
 
 	def email=(value)
