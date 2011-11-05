@@ -1,5 +1,5 @@
 atom_feed do |feed|
-	feed.title("Новые игры")
+	feed.title("FGR - новые игры")
 	feed.updated(@games.first.updated_at)
 	@games.each do |game|
 		feed.entry(game) do |entry|

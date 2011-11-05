@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		Portal.all.each do |p|
+		Portal.exclude(@user.portals).each do |p|
 			@user.user_portal_accounts.build(:portal => p)
 		end
 	end
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 			flash[:success] = "Добро пожаловать на FGR, #{@user.username}"
 			redirect_to root_url
 		else
+			Portal.exclude(@user.portals).each do |p|
+				@user.user_portal_accounts.build(:portal => p)
+			end
 			flash.now[:error] = "Произошла ошибка..."
 			render :new
 		end
@@ -29,15 +32,27 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find_by_username(params[:id])
+
+		if @user == current_user
+			Portal.exclude(@user.portals).each do |p|
+				@user.user_portal_accounts.build(:portal => p)
+			end
+		else
+			redirect_to edit_user_path(current_user)
+		end
 	end
 
 	def update
-		@user = User.find_by_username(params[:id])
+		@user = current_user
 
 		if @user.update_attributes(params[:user])
 			flash[:success] = 'Профиль обновлен'
 			redirect_to root_url
 		else
+			Portal.exclude(@user.portals).each do |p|
+				@user.user_portal_accounts.build(:portal => p)
+			end
+			flash.now[:error] = "Произошла ошибка..."
 			render :action => "edit"
 		end
 	end

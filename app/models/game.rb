@@ -1,8 +1,11 @@
 class Game < ActiveRecord::Base
 	belongs_to :user
 	has_many :requests, :dependent => :destroy, :include => :portal, :validate => true
+	has_many :portals, :through => :requests
 
 	accepts_nested_attributes_for :requests, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
+
+	validates :name, :presence => true
 
 	default_scope order("games.updated_at DESC")
 

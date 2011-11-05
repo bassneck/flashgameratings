@@ -1,5 +1,8 @@
-%li
+%div
 	%h3
-		= game.name
+		- if logged_in? and game.user == current_user
+			= link_to game.name, edit_game_path(game)
+		- else
+			= game.name
 		= render game.requests
 	#{game.user.username} (#{game.user.points})

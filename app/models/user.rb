@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :user_votes
 	has_many :voted_requests, :through => :user_votes, :source => :request
 	has_many :user_portal_accounts, :dependent => :destroy
+	has_many :portals, :through => :user_portal_accounts
 	has_many :requests, :through => :games
 
 	attr_accessible :username, :password, :password_confirmation, :remember_me
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
 
 	accepts_nested_attributes_for :user_portal_accounts, :reject_if => lambda { |a| a[:username].blank? }, :allow_destroy => true
 
-	scope :profile, select('"users"."id", "users"."username", "users"."points"')
+	scope :profile, select('"users"."id", "users"."username", "users"."points"').includes(:user_votes)
 	scope :best, where('"users"."points" > 0').order('"users"."points" DESC').limit(10)
 
 	def to_param
@@ -29,7 +30,8 @@ class User < ActiveRecord::Base
 	end
 
 	def points
-		user_votes.count - (requests.count * 10)
+		#user_votes.count - (requests.count * 10)
+		0
 	end
 
 	def email=(value)
