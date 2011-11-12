@@ -6,7 +6,6 @@ class GamesController < ApplicationController
 	#before_filter :require_points, :only => [:new, :create]
 
 	def index
-		# TODO index should only show games that current_user hasn't voted for
 		@games = Game.latest
 
 		respond_to do |format|

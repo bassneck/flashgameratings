@@ -29,17 +29,17 @@ class User < ActiveRecord::Base
 		username
 	end
 
-	def points
-		user_votes.count - (requests.count * 10)
-	end
-
 	def email=(value)
 		self[:email] = value unless value.blank?
 	end
 
+	def calculate_points
+		self[:points] = user_votes.count - (requests.count * 10)
+	end
+
 	def self.calculate_points
 		User.all.each do |u|
-			u.points = u.user_votes.count - (u.requests.count * 10)
+			u.calculate_points
 			u.save
 		end
 	end
