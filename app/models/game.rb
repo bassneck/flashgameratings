@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
 	belongs_to :user
 	has_many :requests, :dependent => :destroy, :include => :portal, :validate => true
 	has_many :portals, :through => :requests
+	has_many :user_votes, :through => :requests
+	has_many :voters, :through => :user_votes, :source => :user
 
 	accepts_nested_attributes_for :requests, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
 

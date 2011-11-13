@@ -1,5 +1,5 @@
-task :user => [:environment] do
-	task :calculate_points do
+namespace :user do
+	task :calculate_points => [:environment] do
 		User.calculate_points
 	end
 end

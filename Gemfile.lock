@@ -6,6 +6,13 @@ GIT
       railties (~> 3.0)
       thor (~> 0.14)
 
+GIT
+  remote: git://github.com/michelson/lazy_high_charts.git
+  revision: 6721ea6ada7314d55ac57a6c5d378e7e6ba8a4c7
+  specs:
+    lazy_high_charts (1.1.5)
+      bundler (~> 1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -179,6 +186,7 @@ DEPENDENCIES
   haml
   heroku_san
   jquery-rails
+  lazy_high_charts!
   pg
   rails (= 3.1.1)
   sass-rails (~> 3.1.4)

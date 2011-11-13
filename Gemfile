@@ -22,6 +22,8 @@ gem 'haml'
 
 gem 'sorcery'
 
+gem 'lazy_high_charts', :git => 'git://github.com/michelson/lazy_high_charts.git'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

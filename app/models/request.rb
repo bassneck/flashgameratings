@@ -29,4 +29,6 @@ class Request < ActiveRecord::Base
 	def url
 		self[:url]
 	end
+
+
 end

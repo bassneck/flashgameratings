@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031181843) do
+ActiveRecord::Schema.define(:version => 20111112215700) do
 
   create_table "games", :force => true do |t|
     t.string    "name"
@@ -29,11 +29,14 @@ ActiveRecord::Schema.define(:version => 20111031181843) do
   end
 
   create_table "requests", :force => true do |t|
-    t.integer "game_id"
-    t.string  "remote_id"
-    t.string  "url"
-    t.integer "portal_id"
+    t.integer  "game_id"
+    t.string   "remote_id"
+    t.string   "url"
+    t.integer  "portal_id"
+    t.datetime "created_at"
   end
+
+  add_index "requests", ["created_at"], :name => "index_requests_on_created_at"
 
   create_table "user_portal_accounts", :force => true do |t|
     t.integer "user_id"
@@ -42,10 +45,12 @@ ActiveRecord::Schema.define(:version => 20111031181843) do
   end
 
   create_table "user_votes", :force => true do |t|
-    t.integer "user_id"
-    t.integer "request_id"
+    t.integer  "user_id"
+    t.integer  "request_id"
+    t.datetime "created_at"
   end
 
+  add_index "user_votes", ["created_at"], :name => "index_user_votes_on_created_at"
   add_index "user_votes", ["user_id", "request_id"], :name => "index_user_votes_on_user_id_and_request_id", :unique => true
 
   create_table "users", :force => true do |t|
@@ -61,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20111031181843) do
     t.string    "forums"
     t.string    "blogs"
     t.string    "reset_password_token"
-    t.datetime  "reset_password_token_expires_at"
-    t.datetime  "reset_password_email_sent_at"
+    t.timestamp "reset_password_token_expires_at"
+    t.timestamp "reset_password_email_sent_at"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

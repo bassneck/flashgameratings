@@ -16,6 +16,16 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find(params[:id])
+
+		votes = @game.user_votes.order("user_votes.created_at").group("user_votes.created_at").select("user_votes.created_at, COUNT(user_votes.id) as count")
+
+		@chart = LazyHighCharts::HighChart.new('graph') do |f|
+			f.options[:title] = { :text => "Статистика голосов за #{@game.name}" }
+
+			f.xAxis :type => "datetime", :dateTimeLabelFormats => { :day => '%e of %b' }
+			f.series :name => "Голоса", :data => votes.map { |v| [v.created_at.to_time.to_i * 1000, v.count] }
+
+		end
 	end
 
 	def new
