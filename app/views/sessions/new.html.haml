@@ -10,9 +10,9 @@
 			.input
 				= password_field_tag :password, params[:password], { :class => :xlarge }
 		.clearfix
-			%label Запомнить
+			%label Не запоминать
 			.input
-				= check_box_tag :remember_me, params[:remember_me]
+				= check_box_tag :remember_me, params[:forget_me]
 
 		.actions
 			= submit_tag "Войти", :class => "btn primary"

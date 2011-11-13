@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = login(params[:username], params[:password], params[:remember_me])
+		user = login(params[:username], params[:password], !params[:forget_me] )
 		if user
 			redirect_back_or_to root_url
 			flash.now[:success] = "Oh hai!"
