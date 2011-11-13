@@ -1,7 +1,7 @@
-%div
+%li[game]
 	%h3
-		= link_to game.name, game
 		- if logged_in? and game.user == current_user
-			= link_to "редактировать", edit_game_path(game)
+			= link_to image_tag(asset_path("edit.png"), :width => 18, :height => 18), edit_game_path(game), :class => "edit", :title => "редактировать"
+		= link_to game.name, game
 		= render game.requests
 	#{game.user.username} (#{game.user.points})
