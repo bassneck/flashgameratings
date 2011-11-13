@@ -24,7 +24,7 @@ class GamesController < ApplicationController
 			f.options[:title] = { :text => "Статистика голосов за #{@game.name}" }
 
 			f.xAxis :type => "datetime", :dateTimeLabelFormats => { :day => '%e of %b' }
-			f.series :name => "Голоса", :data => votes.map { |v| [v.created_at.to_time.to_i * 1000, v.count] }
+			f.series :name => "Голоса", :data => votes.map { |v| [v.created_at.to_time.to_i * 1000, v.count.to_i] }
 
 		end
 	end
