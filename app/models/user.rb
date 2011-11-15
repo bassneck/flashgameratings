@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
 	def calculate_points
 		self[:points] = user_votes.count - (requests.count * 10)
+		self
 	end
 
 	def self.calculate_points

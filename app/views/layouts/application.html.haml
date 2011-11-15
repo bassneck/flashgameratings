@@ -25,6 +25,10 @@
 						= form_tag sessions_path, :class => "pull-right" do
 							= text_field_tag :username, params[:username], :placeholder => "Логин", :class => "input-small"
 							= password_field_tag :password, params[:password], :placeholder => "Пароль", :class => "input-small"
+							%p.remember
+								%label
+									%span hi
+									= check_box_tag :forget_me, params[:forget_me]
 							= button_tag "Войти", :name => "commit", :type => "submit", :class => "btn primary"
 							= link_to "Регистрация", sign_up_path, :class => "btn"
 
