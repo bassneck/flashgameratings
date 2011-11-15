@@ -1,5 +1,9 @@
 - @title = @game.name
 
-= high_chart("my_id", @chart)
+%h3 Игра на порталах
+= render @game.requests
+
+%p
+	= high_chart("my_id", @chart)
 
 %p Всего голосов: #{@game.user_votes.count}
