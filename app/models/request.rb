@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 class Request < ActiveRecord::Base
-	belongs_to :game
+	belongs_to :game, :touch => true
 	belongs_to :portal
 	has_many :user_votes
 

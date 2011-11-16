@@ -14,8 +14,4 @@ class Game < ActiveRecord::Base
 	scope :latest, where("games.updated_at > ?", Time.now - 2.weeks)
 	scope :unvoted, lambda{ |u| includes(:requests, :user).where("games.user_id != ?", u.id).where("requests.id NOT IN (?)", u.voted_requests.any? ? u.voted_request_ids : 0) }
 
-	after_create do |record|
-		record.user.points -= 20
-		record.user.save
-	end
 end
