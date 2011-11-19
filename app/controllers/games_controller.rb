@@ -52,7 +52,6 @@ class GamesController < ApplicationController
 	end
 
 	def edit
-		# TODO allow users to edit their games
 		@game = current_user.games.find(params[:id])
 		Portal.exclude(@game.portals).each do |p|
 			@game.requests.build(:portal => p)
@@ -72,6 +71,7 @@ class GamesController < ApplicationController
 			render :action => "edit"
 		end
 	end
+
 
 	protected
 
