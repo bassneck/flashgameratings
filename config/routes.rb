@@ -9,7 +9,9 @@ Fgr::Application.routes.draw do
 	resources :sessions
 	resources :password_resets
 
-	resources :games
+	resources :games do
+		get "informer", :on => :collection
+	end
 
 	root :to => "games#index"
 

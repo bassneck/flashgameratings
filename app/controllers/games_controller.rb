@@ -2,7 +2,7 @@
 
 class GamesController < ApplicationController
 
-	before_filter :require_login, :except => [:index]
+	#before_filter :require_login, :except => [:index, :unvoted_count]
 	#before_filter :require_points, :only => [:new, :create]
 
 	def index
@@ -72,6 +72,22 @@ class GamesController < ApplicationController
 		end
 	end
 
+	def informer
+		if params[:forum_user]
+			@user = User.find_by_forums(params[:forum_user])
+		elsif params[:user_blogs]
+			@user = User.find_by_blogs(params[:blog_user])
+		else
+			raise ArgumentError, "Argument missing: forum_user/blog_user"
+		end
+
+		@count = { :count => Game.latest.unvoted(@user).count }
+
+		respond_to do |format|
+			format.json { render :json => @count }
+			format.xml { render :xml => @count }
+		end
+	end
 
 	protected
 
