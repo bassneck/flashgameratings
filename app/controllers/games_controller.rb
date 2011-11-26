@@ -76,7 +76,7 @@ class GamesController < ApplicationController
 
 		if params[:forum_user]
 			@user = User.find_by_forums(params[:forum_user])
-		elsif params[:user_blogs]
+		elsif params[:blog_user]
 			@user = User.find_by_blogs(params[:blog_user])
 		end
 
