@@ -11,6 +11,8 @@ class Request < ActiveRecord::Base
 		end
 	end
 
+	after_create { |record| record.game.user.calculate_points.save }
+
 	scope :unvoted, lambda{ |u|
 		if u
 			where("requests.id NOT IN (?)", u.voted_request_ids)
@@ -30,5 +32,8 @@ class Request < ActiveRecord::Base
 		self[:url]
 	end
 
+	def fresh?
+		true if created_at >= Time.now - 1.week
+	end
 
 end

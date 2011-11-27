@@ -7,10 +7,8 @@ class RequestsController < ApplicationController
 	def show
 		@request = Request.find(params[:id])
 
-		if logged_in? and @request.game.user != current_user
-			if @request.created_at >= Time.now - 1.week and not current_user.voted_requests.exists?(@request)
-				current_user.user_votes.create(:request => @request)
-			end
+		if logged_in? and current_user.can_vote?(@request) and @request.fresh?
+			current_user.user_votes.create(:request => @request)
 		end
 
 		redirect_to "http://#{@request.url}"

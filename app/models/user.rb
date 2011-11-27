@@ -45,4 +45,12 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def can_vote?(request)
+		request.game.user != self and not voted_for?(request)
+	end
+
+	def voted_for?(request)
+		voted_requests.exists?(request)
+	end
+
 end
