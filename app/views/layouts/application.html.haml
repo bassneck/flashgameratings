@@ -14,10 +14,9 @@
 				.container
 					%a.brand{ :href=> root_url } FGR[beta]
 					%ul.nav
-						- if logged_in?
-							%li
-								%strong
-									= link_to "Добавить игру", new_game_path
+						%li
+							%strong
+								= link_to "Добавить игру", new_game_path
 						%li= link_to "Блоги", "http://flashgameblogs.ru"
 						%li= link_to "Форумы", "http://flashgamedev.ru"
 					- if logged_in?
