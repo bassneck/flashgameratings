@@ -13,13 +13,18 @@
 			.fill
 				.container
 					%a.brand{ :href=> root_url } FGR[beta]
-					- if logged_in?
-						%ul.nav
+					%ul.nav
+						- if logged_in?
 							%li
-								= link_to "Добавить", new_game_path
+								%strong
+									= link_to "Добавить игру", new_game_path
+						%li= link_to "Блоги", "http://flashgameblogs.ru"
+						%li= link_to "Форумы", "http://flashgamedev.ru"
+					- if logged_in?
 						.pull-right
 							%ul
 								%li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
+								%li= link_to "профиль", edit_user_path(current_user)
 								%li= link_to "выйти", sign_out_path
 					- else
 						.pull-right
