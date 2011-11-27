@@ -1,3 +1,12 @@
 - @title = "Новые игры"
-%ul.unstyled
-	= render @games
+- @games.group_by(&:updated_at_date).each do |date, games|
+	.date
+		- if date == Date.today
+			Сегодня
+		- elsif date == Date.today - 1
+			Вчера
+		- else
+			= date.strftime("%d.%m.%y")
+
+	%ul.unstyled
+		= render games
