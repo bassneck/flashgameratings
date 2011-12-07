@@ -33,7 +33,7 @@ class Request < ActiveRecord::Base
 	end
 
 	def fresh?
-		created_at.to_date >= Date.today - 1.week
+		created_at.to_date >= Date.today - 1.day
 	end
 
 end
