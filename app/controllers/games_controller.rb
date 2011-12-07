@@ -89,6 +89,7 @@ class GamesController < ApplicationController
 		@count = { :count => count }
 
 		respond_to do |format|
+			format.js  { render :json => @count, :callback => params[:callback] }
 			format.json { render :json => @count }
 			format.xml { render :xml => @count }
 		end
