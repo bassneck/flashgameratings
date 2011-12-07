@@ -2,7 +2,7 @@
 
 class GamesController < ApplicationController
 
-	before_filter :require_login, :except => [:index, :unvoted_count]
+	before_filter :require_login, :except => [:index, :informer]
 	#before_filter :require_points, :only => [:new, :create]
 
 	def index
