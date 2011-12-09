@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
 	default_scope order("games.updated_at DESC")
 
 	scope :latest, where("games.updated_at > ?", Time.now - 2.weeks)
-	scope :unvoted, lambda{ |u| includes(:requests, :user).where("games.user_id != ?", u.id).where("games.updated_at >= #{Request.fresh_date}").where("requests.id NOT IN (?)", u.voted_requests.any? ? u.voted_request_ids : 0) }
+	scope :unvoted, lambda{ |u| includes(:requests, :user).where("games.user_id != ?", u.id).where("games.updated_at >= ?", Request.fresh_date).where("requests.id NOT IN (?)", u.voted_requests.any? ? u.voted_request_ids : 0) }
 
 	def updated_at_date
 		self[:updated_at].to_date
