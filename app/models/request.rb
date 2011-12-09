@@ -37,7 +37,7 @@ class Request < ActiveRecord::Base
 	end
 
 	def self.fresh_date
-		Date.today - 1.day
+		(Date.today - 1.day).to_date
 	end
 
 end
