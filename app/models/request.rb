@@ -4,7 +4,7 @@ class Request < ActiveRecord::Base
 	belongs_to :game, :touch => true
 	belongs_to :portal
 	has_many :user_votes
-
+	has_many :voters, :class_name => "User", :through => :user_votes
 	validates_each :url do |model, attribute, value|
 		if not value =~ Regexp.new("^(http://|https://)?(www\.)?" + model.portal.url + model.portal.pattern + "$")
 			model.errors.add(attribute, 'не соответствует шаблону')
@@ -34,6 +34,10 @@ class Request < ActiveRecord::Base
 
 	def fresh?
 		created_at.to_date >= Date.today - 1.day
+	end
+
+	def self.fresh_date
+		Date.today - 1.day
 	end
 
 end

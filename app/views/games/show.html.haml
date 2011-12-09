@@ -3,4 +3,4 @@
 %h3 Игра на порталах
 = render @game.requests
 
-%p Всего голосов: #{@game.user_votes.count}
+%p Всего голосов: #{@game.user_votes.count} от #{@game.voters.count} камрадов
