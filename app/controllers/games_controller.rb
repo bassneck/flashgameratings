@@ -82,7 +82,7 @@ class GamesController < ApplicationController
 		end
 
 		if @user
-			count = Game.latest.unvoted(@user).count
+			count = Game.latest.not_banned.unvoted(@user).count
 		else
 			count = -1
 		end
