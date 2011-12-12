@@ -40,9 +40,9 @@ class Request < ActiveRecord::Base
 		Date.today - 1.day
 	end
 
-	def awards_points(user)
+	def awards_points(user = nil)
 		result = fresh? and not game.user.banned?
-		result &= user.can_vote?(self)
+		result &= user.can_vote?(self) unless user.nil?
 		result
 	end
 
