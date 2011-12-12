@@ -33,11 +33,17 @@ class Request < ActiveRecord::Base
 	end
 
 	def fresh?
-		created_at.to_date >= Date.today - 1.day
+		created_at.to_date >= Request.fresh_date
 	end
 
 	def self.fresh_date
 		Date.today - 1.day
+	end
+
+	def awards_points(user)
+		result = fresh? and not game.user.banned?
+		result &= user.can_vote?(self)
+		result
 	end
 
 end

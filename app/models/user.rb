@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-	has_many :games
-	has_many :user_votes
+	has_many :games, 						:dependent => :destroy
+	has_many :user_votes, 					:dependent => :destroy
 	has_many :voted_requests, :through => :user_votes, :source => :request
-	has_many :user_portal_accounts, :dependent => :destroy
+	has_many :user_portal_accounts, 		:dependent => :destroy
 	has_many :portals, :through => :user_portal_accounts
 	has_many :requests, :through => :games
 

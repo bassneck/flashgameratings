@@ -3,10 +3,11 @@
 class GamesController < ApplicationController
 
 	before_filter :require_login, :except => [:index, :informer]
+	before_filter :check_banned, :except => [:index, :show, :informer]
 	#before_filter :require_points, :only => [:new, :create]
 
 	def index
-		@games = Game.latest
+		@games = Game.latest.not_banned
 
 		respond_to do |format|
 			format.html
@@ -99,7 +100,7 @@ class GamesController < ApplicationController
 
 		def require_points
 			if current_user.points < 0
-				flash[:error] = "Рейтинг должен быть > 0. Проголосуйте за игры камрадов"
+				flash[:error] = "Рейтинг должен быть > 0. Проголосуйте за игры камрадов."
       			redirect_to root_url
 			end
 		end

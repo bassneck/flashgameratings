@@ -97,6 +97,7 @@ a.edit {
 }
 
 .date {
+	//margin-left:-40px;
 	margin-top:20px;
 	margin-bottom:10px;
 	padding-bottom:10px;
@@ -104,6 +105,8 @@ a.edit {
 	font-weight:bold;
 	color:#5c5b5b;
 	border-bottom:1px dashed #dfdfdf;
+	//width:100px;
+	//background:red;
 
 	&:first-child {
 		margin-top:0;
