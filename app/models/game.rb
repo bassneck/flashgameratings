@@ -1,4 +1,7 @@
 class Game < ActiveRecord::Base
+
+	MINIMUM_RATING = -40
+
 	belongs_to :user
 	has_many :requests, :dependent => :destroy, :include => :portal, :validate => true
 	has_many :portals, :through => :requests
@@ -19,5 +22,7 @@ class Game < ActiveRecord::Base
 	def updated_at_date
 		self[:updated_at].to_date
 	end
+
+
 
 end
