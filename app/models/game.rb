@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
 
-	MINIMUM_RATING = -40
+	MINIMUM_RATING = -20
 
 	belongs_to :user
 	has_many :requests, :dependent => :destroy, :include => :portal, :validate => true
