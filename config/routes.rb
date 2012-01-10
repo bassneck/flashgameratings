@@ -4,6 +4,11 @@ Fgr::Application.routes.draw do
 	get "sign_in" => "sessions#new", :as => "sign_in"
 	get "sign_up" => "users#new", :as => "sign_up"
 
+	resources :pages, :only => [] do
+		collection do
+			get "about"
+		end
+	end
 	resources :requests, :only => [:show]
 	resources :users
 	resources :sessions
