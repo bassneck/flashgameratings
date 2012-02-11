@@ -99,8 +99,8 @@ class GamesController < ApplicationController
 	protected
 
 		def require_points
-			if current_user.points <= Game::MINIMUM_RATING
-				flash[:error] = "Ваш рейтинг должен быть больше #{Game::MINIMUM_RATING}. Проголосуйте за игры камрадов."
+			if current_user.points < Game::MINIMUM_RATING
+				flash[:error] = "Ваш рейтинг должен быть не меньше #{Game::MINIMUM_RATING}. Проголосуйте за игры камрадов."
       			redirect_to root_url
 			end
 		end
