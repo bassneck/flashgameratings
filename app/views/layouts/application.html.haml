@@ -2,60 +2,53 @@
 %html
 	%head
 		%title Сообщество плюсовиков
-		= stylesheet_link_tag    "application"
-		= javascript_include_tag "application"
+		= stylesheet_link_tag    'application'
+		= javascript_include_tag 'application'
 		= csrf_meta_tags
 		= analytics
 		= auto_discovery_link_tag :atom, games_url(:atom)
-	%body
+	%body{ :class=> [params[:controller], params[:action]]}
 
-		.topbar
-			.fill
+		.navbar.navbar-fixed-top
+			.navbar-inner
 				.container
 					%a.brand{ :href=> root_url } FGR[beta]
+
 					%ul.nav
-						%li
-							%strong
-								= link_to "Добавить игру", new_game_path
-						%li= link_to "Блоги", "http://flashgameblogs.ru"
-						%li= link_to "Форумы", "http://flashgamedev.ru"
+						%li= link_to 'Добавить игру', new_game_path
+						%li= link_to 'Блоги', 'http://flashgameblogs.ru'
+						%li= link_to 'Форумы', 'http://flashgamedev.ru'
 					- if logged_in?
-						.pull-right
-							%ul
-								%li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
-								%li= link_to "профиль", edit_user_path(current_user)
-								%li= link_to "выйти", sign_out_path
+						%ul.nav.pull-right
+							%li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
+							%li= link_to 'профиль', edit_user_path(current_user)
+							%li= link_to 'выйти', sign_out_path
 					- else
-						.pull-right
-							%ul
-								%li= link_to "Войти", sign_in_path, :class => "sign-in"
-								%li= link_to "Зарегистрироваться", sign_up_path
+						%ul.nav.pull-right
+							%li= link_to 'Войти', sign_in_path, :class => 'sign-in'
+							%li= link_to 'Зарегистрироваться', sign_up_path
 
 		.container
 			.content
 				.page-header
-					%h1= @title || "Заголовок"
+					%h1= @title || 'Заголовок'
 
 				- flash.each do |key, value|
-					.alert-message{ :class => key }
-						%p
-							%strong= value
+					.alert{ :class => "alert-#{key}" }
+						%strong= value
 
 				- if logged_in? and current_user.email.blank?
-					.alert-message.block-message.notice
+					.alert.alert-info
 						%p
 							Пожалуйста, укажите ваш email на случай потери пароля.
 						%p
-							= form_for current_user do |f|
-								.clearfix
-									%label Email *
-									.input
-										= f.text_field :email, { :class => :xlarge }
-								.actions
-									= f.submit "Сохранить", :class => "btn primary"
+							= form_for current_user, :html => { :class => 'form-inline' } do |f|
+								%label.control-label Email *
+								= f.text_field :email, { :class => :xlarge }
+								= f.submit 'Сохранить', :class => 'btn primary'
 
 				.row
-					.span10
+					.span8
 						= yield
 					.span4
 						%h3 Лучшие плюсовики
@@ -66,25 +59,27 @@
 			%footer
 				%p &copy; FlashGameRatings #{Time.now.year}
 
-		#modal-auth-form.modal.hide.fade{ :style => "display: none; " }
-			.modal-header
-				%a.close{ :href => "#" } x
-				%h3 Авторизация
-			.modal-body
-				= form_tag sessions_path do
+
+		#modal-auth-form.modal.hide.fade
+			= form_tag sessions_path, :class => 'form-horizontal' do
+				.modal-header
+					%button{ :type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' } ×
+					%h3 Авторизация
+				.modal-body
 					%fieldset
-						.clearfix
-							%label Логин
-							.input
+						.control-group
+							%label.control-label Логин
+							.controls
 								= text_field_tag :username, params[:username], { :class => :xlarge }
-						.clearfix
-							%label Пароль
-							.input
+						.control-group
+							%label.control-label Пароль
+							.controls
 								= password_field_tag :password, params[:password], { :class => :xlarge }
-						.clearfix
-							%label Не запоминать
-							.input
-								= check_box_tag :forget_me, params[:forget_me]
-					.actions
-						= submit_tag "Войти", :class => "btn primary"
-						= link_to "Забыли пароль?", sign_in_path
+						.control-group
+							.controls
+								%label.checkbox
+									= check_box_tag :forget_me, params[:forget_me]
+									Не запоминать
+				.form-actions
+					= submit_tag 'Войти', :class => 'btn btn-primary'
+					= link_to 'Забыли пароль?', sign_in_path

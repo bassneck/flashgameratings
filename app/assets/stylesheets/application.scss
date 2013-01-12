@@ -5,13 +5,23 @@
  *= require_self
 */
 
-@import "bootstrap";
-@import "compass";
+$textColor: #404040;
 
-.topbar-inner,
-.topbar .fill {
-	background-color: #222;
-	@include vertical-gradient(#274b54, #162c31);
+$navbarBackgroundHighlight: #274B54;
+$navbarBackground: darken($navbarBackgroundHighlight, 10%);
+$navbarBorder: darken($navbarBackground, 12%);
+
+$navbarText: #BFBFBF;
+$navbarLinkColor: $navbarText;
+$navbarLinkColorHover: #FFF;
+
+$navbarBrandColor: #FFF;
+
+@import 'bootstrap';
+@import 'compass';
+@import 'layout';
+@import 'games';
+
+.brand:hover {
+	background: rgba(#fff, 0.05)
 }
-
-@import "layout";

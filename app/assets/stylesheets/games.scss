@@ -1,0 +1,67 @@
+body.games {
+
+	.date {
+		margin-top:20px;
+		margin-bottom:10px;
+		padding-bottom:10px;
+		font-size:1.2em;
+		font-weight:bold;
+		color:#5c5b5b;
+		border-bottom:1px dashed #dfdfdf;
+
+		&:first-child {
+			margin-top:0;
+		}
+	}
+
+	li.game {
+
+		margin-bottom:20px;
+
+		.title {
+			font-size: 18px;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		a {
+			color:#505050;
+			text-decoration:none;
+			border-bottom:1px dashed #c6c6c6;
+
+			&:hover {
+				color:#737272;
+			}
+		}
+
+		a.request {
+			font-size:18px;
+			text-transform: uppercase;
+			color:#fff !important;
+			border:none !important;
+			padding: 4px 4px;
+			&:hover {
+				text-decoration:none;
+				color:#fff;
+				@include single-box-shadow(#162c31, 0, 0, 2px);
+			}
+
+			&.voted {
+				background-color:#a7a6a6 !important;
+			}
+		}
+
+		a.edit {
+			border:none !important;
+		}
+	}
+
+	.info {
+		line-height: 18px;
+		color: gray;
+
+		span {
+			margin-right:15px;
+		}
+	}
+}

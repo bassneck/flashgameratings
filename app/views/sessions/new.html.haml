@@ -1,28 +1,21 @@
-- @title = "Вход"
-= form_tag sessions_path do
+- @title = 'Вход'
+= form_tag sessions_path, :class => 'form-horizontal' do
 	%fieldset
-		.clearfix
-			%label Логин
-			.input
+		.control-group
+			%label.control-label Логин
+			.controls
 				= text_field_tag :username, params[:username], { :class => :xlarge }
-		.clearfix
-			%label Пароль
-			.input
+		.control-group
+			%label.control-label Пароль
+			.controls
 				= password_field_tag :password, params[:password], { :class => :xlarge }
-		.clearfix
-			%label Не запоминать
-			.input
-				= check_box_tag :forget_me, params[:forget_me]
+		.control-group
+			.controls
+				%label.checkbox
+					= check_box_tag :forget_me, params[:forget_me]
+					Не запоминать
 
-		.actions
-			= submit_tag "Войти", :class => "btn primary"
+		.form-actions
+			= submit_tag 'Войти', :class => 'btn btn-primary'
 
-= form_tag password_resets_path, :method => :post do
-	%fieldset
-		%legend Забыли пароль?
-		.clearfix
-			%label Логин
-			.input
-				= text_field_tag :username
-		.actions
-			= submit_tag "Восстановить пароль", :class => "btn"
+= render :partial => 'layouts/password_reset'

@@ -1,27 +1,29 @@
 - @title = "Добавить игру"
-.alert-message.block-message.info
+.alert.alert-block.alert-info
 	%p
 		%strong Не добавляйте в рейтинг-группу старые игры - рейтинг-группа эффективна в первые дни после загрузки игры на портал.
 		%br	А если добавили, не удивляйтесь, если за вашу следующую игру проголосует меньше людей.
 	%p
 		PS. Не забывайте голосовать за #{link_to "игры камрадов", root_url}!
-= form_for @game do |f|
+= form_for @game, :html => { :class => 'form-horizontal' } do |f|
 	%fieldset
 
 		- if @game.errors.any?
-			.alert-message.block-message.error
+			.alert.alert-block.alert-error
 				%ul
 					- @game.errors.full_messages.each do |e|
 						%li= e
 
 
-		.clearfix
-			%label Название
-			.input= f.text_field :name, { :class => :xlarge }
+		.control-group
+			%label.control-label Название
+			.controls
+				= f.text_field :name, { :class => :xlarge }
 		= f.fields_for :requests do |r|
 			= r.hidden_field :portal_id, :value => r.object.portal.id
-			.clearfix
-				%label= r.object.portal.name
-				.input= r.text_field :url, { :class => :xlarge }
-		.actions
-			= f.submit "Сохранить", :class => "btn primary"
+			.control-group
+				%label.control-label= r.object.portal.name
+				.controls
+					= r.text_field :url, { :class => :xlarge }
+		.form-actions
+			= f.submit "Сохранить", :class => "btn btn-primary"
