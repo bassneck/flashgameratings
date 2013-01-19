@@ -1,5 +1,5 @@
 - @title = 'Регистрация'
-= form_for @user, :html => { :class => 'form-horizontal' } do |f|
+= form_for @user, html: { class: 'form-horizontal' } do |f|
 	%fieldset
 
 		- if @user.errors.any?
@@ -12,42 +12,42 @@
 			%label.control-label Логин *
 			.controls
 				.input
-					= f.text_field :username, { :class => :xlarge }
+					= f.text_field :username, { class: :xlarge }
 		.control-group
 			%label.control-label Email *
 			.controls
 				.input
-					= f.text_field :email, { :class => :xlarge }
+					= f.text_field :email, { class: :xlarge }
 		.control-group
 			%label.control-label Пароль *
 			.controls
 				.input
-					= f.password_field :password, { :class => :xlarge }
+					= f.password_field :password, { class: :xlarge }
 		.control-group
 			%label.control-label Повторите пароль *
 			.controls
 				.input
-					= f.password_field :password_confirmation, { :class => :xlarge }
+					= f.password_field :password_confirmation, { class: :xlarge }
 		.control-group
 			%label.control-label Логин на форумах flashgamedev.ru
 			.controls
 				.input
-					= f.text_field :forums, { :class => :xlarge }
+					= f.text_field :forums, { class: :xlarge }
 		.control-group
 			%label.control-label Логин на блогах flashgameblogs.ru
 			.controls
 				.input
-					= f.text_field :blogs, { :class => :xlarge }
+					= f.text_field :blogs, { class: :xlarge }
 		%fieldset
 			%legend Ваши аккаунты (логины) на порталах
 			= f.fields_for :user_portal_accounts do |r|
-				= r.hidden_field :portal_id, :value => r.object.portal.id
+				= r.hidden_field :portal_id, value: r.object.portal.id
 				.control-group
 					%label.control-label= r.object.portal.name
 					.controls
-						.input= r.text_field :username, { :class => :xlarge }
+						.input= r.text_field :username, { class: :xlarge }
 
 		.form-actions
-			= f.submit 'Сохранить', :class => 'btn btn-primary'
+			= f.submit 'Сохранить', class: 'btn btn-primary'
 
-= render :partial => 'layouts/password_reset'
+= render partial: 'layouts/password_reset'

@@ -12,13 +12,13 @@ class PasswordResetsController < ApplicationController
 
 			unless @user.email.blank?
 				@user.deliver_reset_password_instructions!
-				flash[:success] = "На ваш email отправлена инструкция по восстановлению пароля."
+				flash[:success] = 'На ваш email отправлена инструкция по восстановлению пароля.'
 			else
-				flash[:error] = "Поле email не заполнено. Обратитесь к администратору"
+				flash[:error] = 'Поле email не заполнено. Обратитесь к администратору'
 			end
 			redirect_to root_url
 		else
-			flash[:error] = "Пользователь с таким логином не найден"
+			flash[:error] = 'Пользователь с таким логином не найден'
 			redirect_to sign_in_path
 		end
 	end
@@ -39,9 +39,9 @@ class PasswordResetsController < ApplicationController
 		@user.password_confirmation = params[:user][:password_confirmation]
 		# the next line clears the temporary token and updates the password
 		if @user.change_password!(params[:user][:password])
-			redirect_to(root_path, :notice => 'Password was successfully updated.')
+			redirect_to(root_path, notice: 'Password was successfully updated.')
 		else
-			render :action => "edit"
+			render action: :edit
 		end
 	end
 

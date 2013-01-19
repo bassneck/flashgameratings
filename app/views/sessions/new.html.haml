@@ -1,14 +1,14 @@
 - @title = 'Вход'
-= form_tag sessions_path, :class => 'form-horizontal' do
+= form_tag sessions_path, class: 'form-horizontal' do
 	%fieldset
 		.control-group
 			%label.control-label Логин
 			.controls
-				= text_field_tag :username, params[:username], { :class => :xlarge }
+				= text_field_tag :username, params[:username], { class: :xlarge }
 		.control-group
 			%label.control-label Пароль
 			.controls
-				= password_field_tag :password, params[:password], { :class => :xlarge }
+				= password_field_tag :password, params[:password], { class: :xlarge }
 		.control-group
 			.controls
 				%label.checkbox
@@ -16,6 +16,6 @@
 					Не запоминать
 
 		.form-actions
-			= submit_tag 'Войти', :class => 'btn btn-primary'
+			= submit_tag 'Войти', class: 'btn btn-primary'
 
-= render :partial => 'layouts/password_reset'
+= render partial: 'layouts/password_reset'

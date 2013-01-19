@@ -4,7 +4,7 @@ atom_feed do |feed|
 	@games.each do |game|
 		feed.entry(game) do |entry|
 			entry.title(game.name)
-			entry.content(render(game), :type => 'html')
+			entry.content(render(game), type: 'html')
 			entry.author game.user.username
 		end
 	end

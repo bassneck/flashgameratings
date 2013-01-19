@@ -1,6 +1,6 @@
 - @title = @game.name
 
-= form_for @game, :html => { :class => 'form-horizontal' } do |f|
+= form_for @game, html: { class: 'form-horizontal' } do |f|
 	%fieldset
 
 		- if @game.errors.any?
@@ -13,12 +13,12 @@
 		.control-group
 			%label.control-label Название
 			.controls
-				= f.text_field :name, { :class => :xlarge }
+				= f.text_field :name, { class: :xlarge }
 		= f.fields_for :requests do |r|
-			= r.hidden_field :portal_id, :value => r.object.portal.id
+			= r.hidden_field :portal_id, value: r.object.portal.id
 			.clearfix
 				%label.control-label= r.object.portal.name
 				.controls
-					= r.text_field :url, { :class => :xlarge }
+					= r.text_field :url, { class: :xlarge }
 		.form-actions
-			= f.submit "Сохранить", :class => "btn btn-primary"
+			= f.submit "Сохранить", class: "btn btn-primary"

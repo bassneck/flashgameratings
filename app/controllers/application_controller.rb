@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
 	protected
 
 		def not_authenticated
-			flash[:error] = "Представьтесь, пожалуйста"
+			flash[:error] = 'Представьтесь, пожалуйста'
 			redirect_to sign_in_path
 		end
 
 		def check_banned
 			if current_user.banned?
-				flash[:error] = "Ваш аккаунт заблокирован. Если вы считаете, что это произошло по ошибке, свяжитесь с администратором."
+				flash[:error] = 'Ваш аккаунт заблокирован. Если вы считаете, что это произошло по ошибке, свяжитесь с администратором.'
 				redirect_to root_url
 			end
 		end

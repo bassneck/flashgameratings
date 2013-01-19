@@ -17,23 +17,12 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find(params[:id])
-		votes = @game.user_votes.select("user_votes.created_at, COUNT(user_votes.id) as count").order("user_votes.created_at ASC").group("user_votes.created_at")
-
-		#Game.find(13).user_votes.select("user_votes.created_at, COUNT(user_votes.id) as count").order("user_votes.created_at ASC").group("user_votes.created_at")
-
-		#@chart = LazyHighCharts::HighChart.new('graph') do |f|
-		#	f.options[:title] = { :text => "Статистика голосов за #{@game.name}" }
-		#
-		#	f.xAxis :type => "datetime", :dateTimeLabelFormats => { :day => '%e of %b' }
-		#	f.series :name => "Голоса", :data => votes.map { |v| [v.created_at.to_time.to_i * 1000, v.count.to_i] }
-	    #
-		#end
 	end
 
 	def new
 		@game = Game.new
 		Portal.exclude(@game.portals).each do |p|
-			@game.requests.build(:portal => p)
+			@game.requests.build(portal: p)
 		end
 	end
 
@@ -41,13 +30,13 @@ class GamesController < ApplicationController
 		@game = current_user.games.build(params[:game])
 
 		if @game.save
-			flash[:success] = "Игра добавлена. Сейчас мы дружно её плюсанем..."
+			flash[:success] = 'Игра добавлена. Сейчас мы дружно её плюсанем...'
 			redirect_to root_url
 		else
 			Portal.exclude(@game.portals).each do |p|
-				@game.requests.build(:portal => p)
+				@game.requests.build(portal: p)
 			end
-			flash.now[:error] = "Произошла ошибка..."
+			flash.now[:error] = 'Произошла ошибка...'
 			render :new
 		end
 	end
@@ -55,7 +44,7 @@ class GamesController < ApplicationController
 	def edit
 		@game = current_user.games.find(params[:id])
 		Portal.exclude(@game.portals).each do |p|
-			@game.requests.build(:portal => p)
+			@game.requests.build(portal: p)
 		end
 	end
 
@@ -67,13 +56,13 @@ class GamesController < ApplicationController
 			redirect_to root_url
 		else
 			Portal.exclude(@game.portals).each do |p|
-				@game.requests.build(:portal => p)
+				@game.requests.build(portal: p)
 			end
-			render :action => "edit"
+			render json: :edit
 		end
 	end
 
-	def informer
+	def votable
 
 		if params[:forum_user]
 			@user = User.find_by_forums(params[:forum_user])
@@ -87,12 +76,12 @@ class GamesController < ApplicationController
 			count = -1
 		end
 
-		@count = { :count => count }
+		@count = { json: count }
 
 		respond_to do |format|
-			format.js  { render :json => @count, :callback => params[:callback] }
-			format.json { render :json => @count }
-			format.xml { render :xml => @count }
+			format.js  { render json: @count, callback: params[:callback] }
+			format.json { render json: @count }
+			format.xml { render xml: @count }
 		end
 	end
 
