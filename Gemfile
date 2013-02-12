@@ -33,6 +33,7 @@ end
 group :production do
 	gem 'pg', '~> 0.11.0'
 	gem 'thin', '~> 1.2.11'
+  gem 'newrelic_rpm'
 end
 
 
