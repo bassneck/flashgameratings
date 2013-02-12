@@ -2,8 +2,8 @@
 
 class GamesController < ApplicationController
 
-	before_filter :require_login, :except => [:index, :informer]
-	before_filter :check_banned, :except => [:index, :show, :informer]
+	before_filter :require_login, :except => [:index, :voteable]
+	before_filter :check_banned, :except => [:index, :show, :voteable]
 	before_filter :require_points, :only => [:new, :create]
 
 	def index
@@ -12,7 +12,7 @@ class GamesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.atom
-      	end
+    end
 	end
 
 	def show
@@ -21,9 +21,7 @@ class GamesController < ApplicationController
 
 	def new
 		@game = Game.new
-		Portal.exclude(@game.portals).each do |p|
-			@game.requests.build(portal: p)
-		end
+    @game.build_requests
 	end
 
 	def create
@@ -32,10 +30,8 @@ class GamesController < ApplicationController
 		if @game.save
 			flash[:success] = 'Игра добавлена. Сейчас мы дружно её плюсанем...'
 			redirect_to root_url
-		else
-			Portal.exclude(@game.portals).each do |p|
-				@game.requests.build(portal: p)
-			end
+    else
+      @game.build_requests
 			flash.now[:error] = 'Произошла ошибка...'
 			render :new
 		end
@@ -43,9 +39,7 @@ class GamesController < ApplicationController
 
 	def edit
 		@game = current_user.games.find(params[:id])
-		Portal.exclude(@game.portals).each do |p|
-			@game.requests.build(portal: p)
-		end
+		@game.build_requests
 	end
 
 	def update
@@ -54,16 +48,13 @@ class GamesController < ApplicationController
 		if @game.update_attributes(params[:game])
 			flash[:success] = 'Игра обновлена'
 			redirect_to root_url
-		else
-			Portal.exclude(@game.portals).each do |p|
-				@game.requests.build(portal: p)
-			end
-			render json: :edit
+    else
+      @game.build_requests
+			render :edit
 		end
 	end
 
-	def votable
-
+	def voteable
 		if params[:forum_user]
 			@user = User.find_by_forums(params[:forum_user])
 		elsif params[:blog_user]
@@ -76,7 +67,7 @@ class GamesController < ApplicationController
 			count = -1
 		end
 
-		@count = { json: count }
+		@count = { count: count }
 
 		respond_to do |format|
 			format.js  { render json: @count, callback: params[:callback] }

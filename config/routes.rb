@@ -14,7 +14,7 @@ Fgr::Application.routes.draw do
 	resources :password_resets
 
 	resources :games do
-		get 'votable', on: :collection
+		get 'voteable', on: :collection
 	end
 
 	root to: 'games#index'
