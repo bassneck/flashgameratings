@@ -14,12 +14,15 @@ gem 'jquery-rails'
 gem 'haml', '~> 3.1.3'
 gem 'sorcery', '~> 0.7.2'
 
+gem 'exception_notification', '~> 3.0.0'
+
 group :development do
-	gem 'heroku_san'
+  gem 'heroku_san'
 	gem 'quiet_assets'
 	gem 'meta_request', '0.2.1'
 	gem 'better_errors'
 	gem 'binding_of_caller'
+  gem 'letter_opener', '~> 1.1.0'
 end
 
 group :development, :test do
