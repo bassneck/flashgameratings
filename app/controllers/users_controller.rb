@@ -5,14 +5,12 @@ class UsersController < ApplicationController
 	before_filter :require_login, except: [:show, :new, :create]
 
 	def show
-		@user = User.find_by_username(params[:id])
+		@user = User.find_by_username!(params[:id])
 	end
 
 	def new
 		@user = User.new
-		Portal.exclude(@user.portals).each do |p|
-			@user.user_portal_accounts.build(portal: p)
-		end
+		@user.build_user_portal_accounts
 	end
 
 	def create
@@ -22,9 +20,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Добро пожаловать на FGR, #{@user.username}"
 			redirect_to root_url
 		else
-			Portal.exclude(@user.portals).each do |p|
-				@user.user_portal_accounts.build(portal: p)
-			end
+      @user.build_user_portal_accounts
 			flash.now[:error] = "Произошла ошибка..."
 			render :new
 		end
@@ -34,9 +30,7 @@ class UsersController < ApplicationController
 		@user = User.find_by_username(params[:id])
 
 		if @user == current_user
-			Portal.exclude(@user.portals).each do |p|
-				@user.user_portal_accounts.build(portal: p)
-			end
+      @user.build_user_portal_accounts
 		else
 			redirect_to edit_user_path(current_user)
 		end
@@ -49,9 +43,7 @@ class UsersController < ApplicationController
 			flash[:success] = 'Профиль обновлен'
 			redirect_to root_url
 		else
-			Portal.exclude(@user.portals).each do |p|
-				@user.user_portal_accounts.build(portal: p)
-			end
+      @user.build_user_portal_accounts
 			flash.now[:error] = "Произошла ошибка..."
 			render action: "edit"
 		end

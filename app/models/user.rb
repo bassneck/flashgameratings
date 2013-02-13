@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-	has_many :games, 						dependent: :destroy
+	has_many :games, 						    dependent: :destroy
 	has_many :user_votes, 					dependent: :destroy
-	has_many :voted_requests, through: :user_votes, source: :request
-	has_many :user_portal_accounts, 		dependent: :destroy
-	has_many :portals, through: :user_portal_accounts
-	has_many :requests, through: :games
+	has_many :voted_requests,       through: :user_votes, source: :request
+  has_many :user_portal_accounts, dependent: :destroy
+	has_many :portals,              through: :user_portal_accounts
+	has_many :requests,             through: :games
 
 	attr_accessible :username, :password, :password_confirmation, :remember_me
 
@@ -51,6 +51,12 @@ class User < ActiveRecord::Base
 
 	def voted_for?(request)
 		voted_requests.exists?(request)
-	end
+  end
+
+  def build_user_portal_accounts
+    Portal.exclude(self.user_portal_accounts.map(&:portal_id)).each do |p|
+      self.user_portal_accounts.build({ portal_id: p.id })
+    end
+  end
 
 end
