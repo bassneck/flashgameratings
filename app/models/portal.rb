@@ -6,5 +6,5 @@ class Portal < ActiveRecord::Base
 
 	attr_accessible :name, :short_name, :url, :pattern, :color
 
-	scope :exclude, lambda { |records| where("?.id NOT IN (?)", self.table_name, records) unless records.empty? }
+	scope :exclude, lambda { |records| where("#{self.table_name}.id NOT IN (?)", records) unless records.empty? }
 end
