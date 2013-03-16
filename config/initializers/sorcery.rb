@@ -102,8 +102,8 @@ Rails.application.config.sorcery.configure do |config|
                                                                                       # inheritable for subclasses.
                                                                                       # Useful for ActiveRecord's STI.
     # -- reset_password --
-
-	user.reset_password_mailer                        = UserMailer
+    user.remember_me_for                              = 20.years
+	  user.reset_password_mailer                        = UserMailer
     user.reset_password_expiration_period             = 1.day
     user.reset_password_time_between_emails           = nil
 
