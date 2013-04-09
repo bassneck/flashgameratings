@@ -14,9 +14,9 @@ class Game < ActiveRecord::Base
 
 	validates :name, presence: true
 
-	default_scope order('games.updated_at DESC')
+	default_scope order('games.updated_at DESC').includes(:user)
 
-	scope :not_banned, joins(:user).where('users.banned' => false)
+	scope :not_banned, where(users: { banned: false })
 	scope :latest, where('games.updated_at > ?', Time.now - 2.weeks)
 	scope :fresh, where('games.updated_at > ?', Request.fresh_date)
 	scope :unvoted, lambda{ |u|
