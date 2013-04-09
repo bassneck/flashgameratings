@@ -1,85 +1,86 @@
 !!!
 %html
-	%head
-		%title Сообщество плюсовиков
-		= stylesheet_link_tag    'application'
-		= javascript_include_tag 'application'
-		= csrf_meta_tags
-		= analytics
-		= auto_discovery_link_tag :atom, games_url(:atom)
-	%body{ :class=> [params[:controller], params[:action]]}
+  %head
+    %title Сообщество плюсовиков
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    = analytics
+    = auto_discovery_link_tag :atom, games_url(:atom)
+  %body{ :class=> [params[:controller], params[:action]]}
 
-		.navbar.navbar-fixed-top
-			.navbar-inner
-				.container
-					%a.brand{ :href=> root_url } FGR[beta]
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{ :href=> root_url } 
+            FGR &beta;
 
-					%ul.nav
-						%li= link_to 'Добавить игру', new_game_path
-						%li= link_to 'Блоги', 'http://flashgameblogs.ru'
-						%li= link_to 'Форумы', 'http://flashgamedev.ru'
-					- if logged_in?
-						%ul.nav.pull-right
-							%li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
-							%li= link_to 'профиль', edit_user_path(current_user)
-							%li= link_to 'выйти', sign_out_path
-					- else
-						%ul.nav.pull-right
-							%li= link_to 'Войти', sign_in_path, class: 'sign-in'
-							%li= link_to 'Зарегистрироваться', sign_up_path
+          %ul.nav
+            %li= link_to 'Добавить игру', new_game_path
+            %li= link_to 'Блоги', 'http://flashgameblogs.ru'
+            %li= link_to 'Форумы', 'http://flashgamedev.ru'
+          - if logged_in?
+            %ul.nav.pull-right
+              %li= link_to "#{current_user.username} (#{(current_user.points)})", current_user
+              %li= link_to 'профиль', edit_user_path(current_user)
+              %li= link_to 'выйти', sign_out_path
+          - else
+            %ul.nav.pull-right
+              %li= link_to 'Войти', sign_in_path, class: 'sign-in'
+              %li= link_to 'Зарегистрироваться', sign_up_path
 
-		.container
-			.content
-				.page-header
-					%h1= @title || 'Заголовок'
+    .container
+      .content
+        .page-header
+          %h1= @title || 'Заголовок'
 
-				- flash.each do |key, value|
-					.alert{ class: "alert-#{key}" }
-						%strong= value
+        - flash.each do |key, value|
+          .alert{ class: "alert-#{key}" }
+            %strong= value
 
-				- if logged_in? and current_user.email.blank?
-					.alert.alert-info
-						%p
-							Пожалуйста, укажите ваш email на случай потери пароля.
-						%p
-							= form_for current_user, html: { class: 'form-inline' } do |f|
-								%label.control-label Email *
-								= f.text_field :email, { class: :xlarge }
-								= f.submit 'Сохранить', class: 'btn primary'
+        - if logged_in? and current_user.email.blank?
+          .alert.alert-info
+            %p
+              Пожалуйста, укажите ваш email на случай потери пароля.
+            %p
+              = form_for current_user, html: { class: 'form-inline' } do |f|
+                %label.control-label Email *
+                = f.text_field :email, { class: :xlarge }
+                = f.submit 'Сохранить', class: 'btn primary'
 
-				.row
-					.span8
-						= yield
-					.span4
-						%h3 Лучшие плюсовики
-						%ul
-							- User.profile.best.each do |u|
-								%li #{u.username} (#{u.points})
+        .row
+          .span8
+            = yield
+          .span4
+            %h3 Лучшие плюсовики
+            %ul
+              - User.profile.best.each do |u|
+                %li #{u.username} (#{u.points})
 
-			%footer
-				%p &copy; FlashGameRatings #{Time.now.year}
+      %footer
+        %p &copy; FlashGameRatings #{Time.now.year}
 
 
-		#modal-auth-form.modal.hide.fade
-			= form_tag sessions_path, class: 'form-horizontal' do
-				.modal-header
-					%button{ type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' } ×
-					%h3 Авторизация
-				.modal-body
-					%fieldset
-						.control-group
-							%label.control-label Логин
-							.controls
-								= text_field_tag :username, params[:username], { class: :xlarge }
-						.control-group
-							%label.control-label Пароль
-							.controls
-								= password_field_tag :password, params[:password], { class: :xlarge }
-						.control-group
-							.controls
-								%label.checkbox
-									= check_box_tag :forget_me, params[:forget_me]
-									Не запоминать
-				.form-actions
-					= submit_tag 'Войти', class: 'btn btn-primary'
-					= link_to 'Забыли пароль?', sign_in_path
+    #modal-auth-form.modal.hide.fade
+      = form_tag sessions_path, class: 'form-horizontal' do
+        .modal-header
+          %button{ type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' } ×
+          %h3 Авторизация
+        .modal-body
+          %fieldset
+            .control-group
+              %label.control-label Логин
+              .controls
+                = text_field_tag :username, params[:username], { class: :xlarge }
+            .control-group
+              %label.control-label Пароль
+              .controls
+                = password_field_tag :password, params[:password], { class: :xlarge }
+            .control-group
+              .controls
+                %label.checkbox
+                  = check_box_tag :forget_me, params[:forget_me]
+                  Не запоминать
+        .form-actions
+          = submit_tag 'Войти', class: 'btn btn-primary'
+          = link_to 'Забыли пароль?', sign_in_path
