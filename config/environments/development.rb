@@ -37,8 +37,8 @@ Fgr::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.middleware.use ExceptionNotifier,
-                        sender_address: 'noreply@flashgameratings.ru',
-                        exception_recipients: 'bassneck@gmail.com'
+  #config.middleware.use ExceptionNotifier,
+  #                      sender_address: 'noreply@flashgameratings.ru',
+  #                      exception_recipients: 'bassneck@gmail.com'
 
 end
