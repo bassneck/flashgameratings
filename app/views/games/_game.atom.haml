@@ -1,4 +1,3 @@
 %h3
-	= game.name
+	#{game.user.username} (#{game.user.points}) добавил игру: #{link_to game.name, game}
 	= render game.requests
-#{game.user.username} (#{game.user.points})
