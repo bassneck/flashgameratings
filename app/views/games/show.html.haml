@@ -1,6 +1,12 @@
 - @title = @game.name
 
-%h3 Игра на порталах
-= render @game.requests
+%p
+  %strong Разместил:
+  #{@game.user.username} (#{@game.user.points})
+%p
+  %strong Игра на порталах:
+  = render @game.requests
 
-%p Всего голосов: #{@game.user_votes.count} от #{@game.voters.count} камрадов
+%p
+  %strong Всего голосов:
+  #{@game.user_votes.count} от #{@game.voters.count} камрадов
