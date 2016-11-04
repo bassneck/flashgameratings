@@ -38,16 +38,6 @@
           .alert{ class: "alert-#{key}" }
             %strong= value
 
-        - if logged_in? and current_user.email.blank?
-          .alert.alert-info
-            %p
-              Пожалуйста, укажите ваш email на случай потери пароля.
-            %p
-              = form_for current_user, html: { class: 'form-inline' } do |f|
-                %label.control-label Email *
-                = f.text_field :email, { class: :xlarge }
-                = f.submit 'Сохранить', class: 'btn primary'
-
         .row
           .span8
             = yield
