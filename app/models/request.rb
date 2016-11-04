@@ -11,7 +11,7 @@ class Request < ActiveRecord::Base
 
 	validates_each :url do |model, attribute, value|
 		unless value =~ Regexp.new('^(http://|https://)?(www\.)?' + model.portal.url + model.portal.pattern + '$')
-			model.errors.add(attribute, 'не соответствует шаблону')
+			model.errors.add("#{model.portal.short_name} URL", 'не соответствует шаблону')
 		end
 	end
 
