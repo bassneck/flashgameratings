@@ -1,109 +1,53 @@
 ruby '1.9.3'
 source 'https://rubygems.org'
 
-# gem 'rails', '3.2.11'
-#
-# gem 'pg', '~> 0.11.0'
-#
-# group :assets do
-# 	gem 'sass-rails', '~> 3.2.3'
-# 	gem 'coffee-rails', '~> 3.2.1'
-# 	gem 'uglifier', '>= 1.0.3'
-# 	gem 'compass-rails', '~> 1.0.3'
-# 	gem 'bootstrap-sass', '~> 2.2.2.0'
-# end
-#
-# gem 'jquery-rails'
-# gem 'haml', '~> 3.1.3'
-# gem 'sorcery', '~> 0.7.2'
-#
-# gem 'exception_notification', '~> 3.0.0'
-#
-# group :development do
-#   gem 'heroku_san'
-# 	gem 'quiet_assets'
-# 	gem 'meta_request', '0.2.1'
-# 	gem 'better_errors'
-# 	gem 'binding_of_caller'
-#   gem 'letter_opener', '~> 1.1.0'
-# end
-#
-# group :test do
-#
-# end
-#
-# group :production do
-# 	gem 'thin', '~> 1.2.11'
-#   gem 'newrelic_rpm', '~> 3.5.6'
-# end
+gem 'rails', '3.2.11'
 
-gem 'actionmailer', '3.2.11'
-gem 'actionpack', '3.2.11'
-gem 'activemodel', '3.2.11'
-gem 'activerecord', '3.2.11'
-gem 'activeresource', '3.2.11'
-gem 'activesupport', '3.2.11'
-gem 'addressable', '2.3.2'
-gem 'arel', '3.0.2'
-gem 'bcrypt-ruby', '3.0.0'
-gem 'better_errors', '0.5.0'
-gem 'binding_of_caller', '0.6.8'
-gem 'bootstrap-sass', '2.2.2.0'
-gem 'builder', '3.0.4'
-gem 'chunky_png', '1.2.7'
-gem 'coderay', '1.0.8'
-gem 'coffee-rails', '3.2.2'
-gem 'coffee-script', '2.2.0'
-gem 'coffee-script-source', '1.4.0'
-gem 'compass', '0.12.2'
-gem 'compass-rails', '1.0.3'
+gem 'pg', '~> 0.11.0'
+
+gem 'thin', '1.2.11'
 gem 'daemons', '1.1.9'
-gem 'erubis', '2.7.0'
 gem 'eventmachine', '1.0.9.1'
-gem 'exception_notification', '3.0.1'
-gem 'excon', '0.16.10'
-gem 'execjs', '1.4.0'
-gem 'faraday', '0.8.4'
-gem 'fssm', '0.2.9'
-gem 'haml', '3.1.7'
-gem 'heroku-api', '0.3.7'
-gem 'heroku_san', '4.0.7'
-gem 'hike', '1.2.1'
-gem 'httpauth', '0.2.0'
-gem 'i18n', '0.6.1'
-gem 'journey', '1.0.4'
+
+group :assets do
+  gem 'tilt', '1.3.3'
+
+  gem 'sprockets', '2.2.2'
+  gem 'hike', '1.2.1'
+
+  gem 'compass', '0.12.2'
+  gem 'compass-rails', '1.0.3'
+
+  gem 'sass-rails', '3.2.6'
+  gem 'sass', '3.2.5'
+
+  gem 'coffee-rails', '3.2.2'
+  gem 'coffee-script', '2.2.0'
+  gem 'coffee-script-source', '1.4.0'
+
+  gem 'bootstrap-sass', '2.2.2.0'
+
+  gem 'uglifier', '>= 1.0.3'
+  gem 'execjs', '1.4.0'
+end
+
 gem 'jquery-rails', '2.1.4'
-gem 'json', '1.7.6'
-gem 'launchy', '2.2.0'
-gem 'letter_opener', '1.1.0'
-gem 'mail', '2.4.4'
-gem 'meta_request', '0.2.1'
-gem 'mime-types', '1.19'
-gem 'multi_json', '1.5.0'
-gem 'multipart-post', '1.1.5'
-gem 'newrelic_rpm', '3.5.8.72'
+gem 'haml', '3.1.7'
+
+gem 'sorcery', '0.7.13'
+gem 'bcrypt-ruby', '3.0.0'
 gem 'oauth', '0.4.7'
 gem 'oauth2', '0.6.1'
-gem 'pg', '0.11.0'
-gem 'polyglot', '0.3.3'
-gem 'quiet_assets', '1.0.1'
-gem 'rack', '1.4.4'
-gem 'rack-cache', '1.2'
-gem 'rack-contrib', '1.1.0'
-gem 'rack-ssl', '1.3.2'
-gem 'rack-test', '0.6.2'
-gem 'rails', '3.2.11'
-gem 'railties', '3.2.11'
-gem 'rake', '10.0.3'
-gem 'rdoc', '3.12'
-gem 'sass', '3.2.5'
-gem 'sass-rails', '3.2.6'
-gem 'sorcery', '0.7.13'
-gem 'sprockets', '2.2.2'
-gem 'thor', '0.16.0'
-gem 'thin', '1.2.11'
-gem 'tilt', '1.3.3'
-gem 'treetop', '1.4.12'
-gem 'tzinfo', '0.3.35'
-gem 'uglifier', '1.3.0'
+gem 'faraday', '0.8.4'
+gem 'httpauth', '0.2.0'
 
+group :development do
+	gem 'quiet_assets'
+	gem 'better_errors'
+	gem 'binding_of_caller'
+  gem 'letter_opener'
+end
+
+group :production do
+  gem 'newrelic_rpm', '3.5.8.72'
+end
