@@ -43,7 +43,7 @@ body.games {
 			&:hover {
 				text-decoration:none;
 				color:#fff;
-				@include single-box-shadow(#162c31, 0, 0, 2px);
+				box-shadow: 0 0 2px #a5a4a8;
 			}
 
 			&.voted {

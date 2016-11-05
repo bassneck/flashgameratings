@@ -15,9 +15,6 @@ group :assets do
   gem 'sprockets', '2.2.2'
   gem 'hike', '1.2.1'
 
-  gem 'compass', '0.12.2'
-  gem 'compass-rails', '1.0.3'
-
   gem 'sass-rails', '3.2.6'
   gem 'sass', '3.2.5'
 
