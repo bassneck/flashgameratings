@@ -39,6 +39,14 @@
           .alert{ class: "alert-#{key}" }
             %strong= value
 
+        - if Time.zone.now < Time.zone.local(2016, 12, 05)
+          .alert.alert-info
+            %p
+              Добавил Steam Greenlight
+              %br/
+              С вопросами и предложениями пишите на #{link_to 'форум', 'http://flashgamedev.ru/viewtopic.php?f=4&t=4264'}
+            %p - bassneck, 05.11.2016
+
         .row
           .span8
             = yield
