@@ -5,6 +5,8 @@
  *= require_self
 */
 
+$sansFontFamily: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
 $textColor: #404040;
 
 $navbarBackgroundHighlight: #274B54;
@@ -17,10 +19,10 @@ $navbarLinkColorHover: #FFF;
 
 $navbarBrandColor: #FFF;
 
+.brand:hover {
+  background: rgba(#fff, 0.05)
+}
+
 @import 'bootstrap';
 @import 'layout';
 @import 'games';
-
-.brand:hover {
-	background: rgba(#fff, 0.05)
-}
