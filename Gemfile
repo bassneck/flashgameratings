@@ -45,7 +45,7 @@ group :development do
 	gem 'quiet_assets'
 	gem 'better_errors'
 	gem 'binding_of_caller'
-  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :production do
