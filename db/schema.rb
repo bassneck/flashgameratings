@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409205224) do
+ActiveRecord::Schema.define(:version => 20161105022800) do
 
   create_table "games", :force => true do |t|
-    t.string    "name"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "games", ["updated_at"], :name => "index_games_on_updated_at"
+  add_index "games", ["updated_at"], :name => "index_games_on_updated_at", :order => {"updated_at"=>:desc}
   add_index "games", ["user_id"], :name => "index_games_on_user_id"
 
   create_table "portals", :force => true do |t|
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(:version => 20130409205224) do
   end
 
   create_table "requests", :force => true do |t|
-    t.integer   "game_id"
-    t.string    "remote_id"
-    t.string    "url"
-    t.integer   "portal_id"
-    t.timestamp "created_at"
+    t.integer  "game_id"
+    t.string   "remote_id"
+    t.string   "url"
+    t.integer  "portal_id"
+    t.datetime "created_at"
   end
 
   add_index "requests", ["created_at"], :name => "index_requests_on_created_at"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(:version => 20130409205224) do
   add_index "user_portal_accounts", ["user_id"], :name => "index_user_portal_accounts_on_user_id"
 
   create_table "user_votes", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "request_id"
-    t.timestamp "created_at"
+    t.integer  "user_id"
+    t.integer  "request_id"
+    t.datetime "created_at"
   end
 
   add_index "user_votes", ["created_at"], :name => "index_user_votes_on_created_at"
@@ -65,25 +65,25 @@ ActiveRecord::Schema.define(:version => 20130409205224) do
   add_index "user_votes", ["user_id"], :name => "index_user_votes_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string    "username",                                           :null => false
-    t.string    "email"
-    t.string    "crypted_password"
-    t.string    "salt"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "remember_me_token"
-    t.timestamp "remember_me_token_expires_at"
-    t.integer   "points",                          :default => 0
-    t.string    "forums"
-    t.string    "blogs"
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_token_expires_at"
-    t.timestamp "reset_password_email_sent_at"
-    t.boolean   "banned",                          :default => false
+    t.string   "username",                                           :null => false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.integer  "points",                          :default => 0
+    t.string   "forums"
+    t.string   "blogs"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.boolean  "banned",                          :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["points"], :name => "index_users_on_points"
+  add_index "users", ["points"], :name => "index_users_on_points", :order => {"points"=>:desc}
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
   add_index "users", ["username"], :name => "index_users_on_username"
 

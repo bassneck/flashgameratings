@@ -2,7 +2,8 @@
 %html
   %head
     %title Сообщество плюсовиков
-    = stylesheet_link_tag    'application'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans'
+    = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
     = analytics
@@ -38,15 +39,13 @@
           .alert{ class: "alert-#{key}" }
             %strong= value
 
-        - if logged_in? and current_user.email.blank?
+        - if Time.zone.now < Time.zone.local(2016, 12, 05)
           .alert.alert-info
             %p
-              Пожалуйста, укажите ваш email на случай потери пароля.
-            %p
-              = form_for current_user, html: { class: 'form-inline' } do |f|
-                %label.control-label Email *
-                = f.text_field :email, { class: :xlarge }
-                = f.submit 'Сохранить', class: 'btn primary'
+              Добавил Steam Greenlight
+              %br/
+              С вопросами и предложениями пишите на #{link_to 'форум', 'http://flashgamedev.ru/viewtopic.php?f=4&t=4264'}
+            %p - bassneck, 05.11.2016
 
         .row
           .span8
