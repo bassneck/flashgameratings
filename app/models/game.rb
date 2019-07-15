@@ -16,10 +16,10 @@ class Game < ActiveRecord::Base
 
 	default_scope order('games.updated_at DESC').includes(:user)
 
-	scope :not_banned, where(users: { banned: false })
-	scope :latest, where('games.updated_at > ?', Time.now - 2.weeks)
-	scope :fresh, where('games.updated_at > ?', Request.fresh_date)
-	scope :unvoted, lambda{ |u|
+	scope :not_banned, lambda { where(users: { banned: false }) }
+	scope :latest, lambda { limit(20) }
+	scope :fresh, lambda { where('games.updated_at > ?', Request.fresh_date) }
+	scope :unvoted, lambda { |u|
     includes(:requests, :user)
     .where('games.user_id != ?', u.id)
     .where('requests.created_at > ?', Request.fresh_date)
