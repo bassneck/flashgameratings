@@ -5,6 +5,8 @@ gem 'rails', '3.2.22'
 
 gem 'pg', '~> 0.11.0'
 
+gem 'dotenv-rails', '~> 2.7.4'
+
 gem 'thin', '1.2.11'
 gem 'daemons', '1.1.9'
 gem 'eventmachine', '1.0.9.1'
@@ -43,8 +45,4 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
   gem 'letter_opener_web'
-end
-
-group :production do
-  gem 'newrelic_rpm', '3.5.8.72'
 end
