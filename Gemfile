@@ -5,9 +5,7 @@ gem 'rails', '3.2.22.5'
 
 gem 'pg', '~> 0.21.0'
 
-gem 'thin', '1.2.11'
-gem 'daemons', '1.1.9'
-gem 'eventmachine', '1.0.9.1'
+gem 'passenger', '~> 5.3.7', require: 'phusion_passenger/rack_handler'
 
 group :assets do
   gem 'tilt', '1.3.3'
