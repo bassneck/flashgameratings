@@ -40,7 +40,3 @@ group :development do
 	gem 'binding_of_caller'
   gem 'letter_opener_web'
 end
-
-group :production do
-  gem 'newrelic_rpm', '3.5.8.72'
-end

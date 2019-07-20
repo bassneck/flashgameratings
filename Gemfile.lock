@@ -76,7 +76,6 @@ GEM
     mime-types (1.25.1)
     multi_json (1.13.1)
     multipart-post (1.2.0)
-    newrelic_rpm (3.5.8.72)
     oauth (0.4.7)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -156,7 +155,6 @@ DEPENDENCIES
   httpauth (= 0.2.0)
   jquery-rails (= 2.1.4)
   letter_opener_web
-  newrelic_rpm (= 3.5.8.72)
   oauth (= 0.4.7)
   oauth2 (= 0.6.1)
   pg (~> 0.21.0)
