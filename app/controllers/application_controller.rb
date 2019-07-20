@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
 	protect_from_forgery
 
+	around_filter { raise }
+
 	protected
 
 		def not_authenticated
