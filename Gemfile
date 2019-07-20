@@ -29,9 +29,6 @@ gem 'haml', '3.1.7'
 
 gem 'sorcery', '0.7.13'
 gem 'bcrypt-ruby', '3.0.0'
-gem 'oauth', '0.4.7'
-gem 'oauth2', '0.6.1'
-gem 'faraday', '0.8.4'
 gem 'httpauth', '0.2.0'
 
 group :development do
