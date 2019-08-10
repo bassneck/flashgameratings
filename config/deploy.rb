@@ -42,3 +42,5 @@ set :deploy_to, '~/www/flashgameratings'
 set :ssh_options, {
   keys: %w(~/.ssh/digital_ocean_id_rsa),
 }
+
+set :rails_assets_groups, :assets
