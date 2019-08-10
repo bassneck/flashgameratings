@@ -32,6 +32,9 @@ gem 'bcrypt-ruby', '3.0.0'
 gem 'httpauth', '0.2.0'
 
 group :development do
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'capistrano-bundler', '~> 1.6.0', require: false
 	gem 'quiet_assets'
 	gem 'better_errors'
 	gem 'binding_of_caller'
