@@ -2,6 +2,7 @@ ruby '2.3.8'
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.22.5'
+gem 'test-unit', '~> 3.0'
 
 gem 'pg', '~> 0.21.0'
 
@@ -40,8 +41,4 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
   gem 'letter_opener_web'
-end
-
-group :test do
-  gem 'test-unit', '~> 3.0'
 end
