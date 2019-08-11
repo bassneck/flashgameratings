@@ -33,6 +33,8 @@ class Request < ActiveRecord::Base
 	end
 
 	def awards_points(user = nil)
+		return true unless user
+
 		result = fresh? and not game.user.banned?
 		result &= user.can_vote?(self) unless user.nil?
 		result
