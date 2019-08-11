@@ -78,10 +78,12 @@ class GamesController < ApplicationController
 
 	protected
 
-		def require_points
-			if current_user.points < Game::MINIMUM_RATING
-				flash[:error] = "Ваш рейтинг должен быть не меньше #{Game::MINIMUM_RATING}. Проголосуйте за игры камрадов."
-      			redirect_to root_url
-			end
+	def require_points
+		policy = SubmitNewGamePolicy.build_from_env(current_user)
+
+		unless policy.can_submit_new_game?
+			flash[:error] = "Ваш рейтинг должен быть не меньше #{policy.minimum_rating}. Проголосуйте за игры камрадов."
+			redirect_to root_url
 		end
+	end
 end
