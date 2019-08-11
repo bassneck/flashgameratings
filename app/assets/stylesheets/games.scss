@@ -34,19 +34,24 @@ body.games {
 			}
 		}
 
-		a.request {
+		a.request-badge {
 			text-transform: uppercase;
 			color:#fff !important;
 			border:none !important;
 			padding: 4px 4px;
-			&:hover {
+
+            &:hover {
 				text-decoration:none;
 				color:#fff;
 				box-shadow: 0 0 2px #a5a4a8;
 			}
 
-			&.voted {
-				background-color:#a7a6a6 !important;
+            &.request-badge--colored {
+
+            }
+
+			&.request-badge--grayscale {
+				background-color: #a7a6a6 !important;
 			}
 		}
 

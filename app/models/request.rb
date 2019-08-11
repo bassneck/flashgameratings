@@ -27,21 +27,4 @@ class Request < ActiveRecord::Base
 
 		self[:url] = value
 	end
-
-	def fresh?
-		created_at.to_date >= Request.fresh_date
-	end
-
-	def awards_points(user = nil)
-		return true unless user
-
-		result = fresh? and not game.user.banned?
-		result &= user.can_vote?(self) unless user.nil?
-		result
-	end
-
-	def self.fresh_date
-		Date.today - 1.day
-	end
-
 end

@@ -16,11 +16,11 @@ class Game < ActiveRecord::Base
 
 	scope :not_banned, lambda { where(users: { banned: false }) }
 	scope :latest, lambda { limit(20) }
-	scope :fresh, lambda { where('games.updated_at > ?', Request.fresh_date) }
+	scope :fresh, lambda { where('games.updated_at > ?', Integer(ENV.fetch('REQUEST_RECENCY_THRESHOLD_HOURS')).hours.ago) }
 	scope :unvoted, lambda { |u|
     includes(:requests, :user)
     .where('games.user_id != ?', u.id)
-    .where('requests.created_at > ?', Request.fresh_date)
+    .where('requests.created_at > ?', Integer(ENV.fetch('REQUEST_RECENCY_THRESHOLD_HOURS')).hours.ago)
     .where('requests.id NOT IN (?)', u.voted_requests.any? ? u.voted_request_ids : 0)
   }
 

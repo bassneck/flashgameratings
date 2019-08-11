@@ -7,11 +7,14 @@ class RequestsController < ApplicationController
 	def show
 		@request = Request.find(params[:id])
 
-		if logged_in? and current_user.can_vote?(@request) and @request.fresh?
-			current_user.user_votes.create(request: @request)
+		if logged_in?
+			policy = AwardPointsPolicy.build_from_env(current_user, @request)
+
+			if policy.should_award_points?
+				current_user.user_votes.create(request: @request)
+			end
 		end
 
 		redirect_to "http://#{@request.url}"
-
 	end
 end

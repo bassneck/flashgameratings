@@ -1,9 +1,10 @@
 module RequestsHelper
 	def yields_points?(request)
 		if logged_in?
-			request.fresh? and not current_user.voted_for?(request)
+			policy = AwardPointsPolicy.build_from_env(current_user, request)
+			policy.should_award_points?
 		else
-		    request.fresh?
+			true
 		end
 	end
 end

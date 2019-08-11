@@ -1,3 +1,3 @@
 = link_to request.portal.short_name, request,
-			class: "label request #{request.awards_points(current_user) ? "" : "voted" }",
+			class: ['label', 'request-badge', (yields_points?(request) ? 'request-badge--colored' : 'request-badge--grayscale')],
 			style: "background-color:##{request.portal.color}", target: "_blank"
