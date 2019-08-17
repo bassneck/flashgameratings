@@ -6,8 +6,6 @@ gem 'test-unit', '~> 3.0'
 
 gem 'pg', '~> 0.21.0'
 
-gem 'passenger', '~> 5.3.7', require: 'phusion_passenger/rack_handler'
-
 gem 'dotenv-rails', '~> 2.7.4'
 
 group :assets do
